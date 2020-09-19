@@ -1,0 +1,27 @@
+#toolbar {
+    font-size: small;
+    color: var(--g3);
+}
+
+.configuration {
+    display: inline-flex;
+    padding: 0 1rem;
+    border-right: var(--normal_border);
+    margin-bottom: 0.37rem;
+
+    & > *,
+    .button {
+        margin: 0;
+        display: inline-block;
+    }
+
+    label {
+        margin: 0 0.37em;
+        border: var(--normal_border);
+        border-color: transparent;
+    }
+
+    &:last-of-type {
+        border-right: none;
+    }
+}

@@ -1,0 +1,97 @@
+#walkthrough_dialogue {
+    $offset: 0.37em;
+    position: absolute;
+    max-width: 24em;
+    font-size: large;
+    top: 0;
+    left: 0;
+    padding: 1em 1em 0 1em;
+    color: var(--white);
+    background: var(--primary);
+    z-index: 99;
+    box-shadow: var(--shadow);
+    overflow: visible;
+
+    &:not(.active) {
+        display: none;
+    }
+
+    &[data-position="center"]::before {
+        display: none;
+    }
+
+    &[data-position="above"] {
+        &::before {
+            top: 100%;
+        }
+    }
+
+    &[data-position="asideLeft"] {
+        &::before {
+            top: calc(1em + #{$offset});
+            left: 100%;
+        }
+    }
+
+    &[data-position="asideRight"] {
+        &::before {
+            top: calc(1em + #{$offset});
+            left: 0;
+        }
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        left: calc(1em + #{$offset});
+        top: 0;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background: inherit;
+    }
+
+    a {
+        &:hover,
+        &:focus {
+            color: var(--g0);
+        }
+    }
+
+    .actions {
+        margin-top: 1em;
+    }
+
+    button {
+        color: var(--g2);
+        background: var(--white);
+
+        &[disabled] {
+            display: none;
+        }
+
+        &:hover,
+        &:focus {
+            border-color: currentColor;
+            color: var(--g0);
+        }
+
+        &.cancel {
+            background: none;
+            margin-left: auto;
+            color: var(--white);
+            opacity: 0.63;
+
+            &:hover,
+            &:focus {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.walkthroughFocus {
+    outline: 0.37em solid var(--primary);
+    z-index: 5;
+}

@@ -1,0 +1,26 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/assets/css/"
+        }
+    ],
+    "liveServer.settings.port": 5502,
+    "saveAndRun": {
+        "commands": [
+            {
+                "cmd": "esbuild --bundle --minify ./app/_main.js --outfile=./assets/app/app.min.js",
+                "match": "app.*\\.js",
+            },
+            {
+                "cmd": "tsc",
+                "match": "app.*\\.js",
+            },
+            {
+                "cmd": "esbuild --minify ./assets/js/app.js --outfile=./assets/js/app.min.js",
+                "match": "app.*\\.js",
+            },
+        ]
+    }
+}

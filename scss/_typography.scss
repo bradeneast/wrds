@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Recursive";
+    src: url("/assets/Recursive.woff2") format("woff2-variations");
+    font-weight: 300 1000;
+    font-display: swap;
+}
+
+body {
+    font-family: "Recursive", "Roboto", "Helvetica", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-variation-settings: "CASL" 0, "MONO" 0;
+    color: var(--g0);
+}
+
+.heading {
+    display: flex;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 800;
+    font-variation-settings: "CASL" 1;
+    margin-bottom: 1rem;
+    color: var(--g3);
+}
+
+::selection {
+    background: var(--g0);
+    color: var(--white);
+}

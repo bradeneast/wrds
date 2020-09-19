@@ -1,0 +1,133 @@
+textarea,
+[contenteditable],
+input,
+select,
+button,
+.button,
+.fileInput {
+    appearance: none;
+    display: block;
+    border: none;
+    font-size: small;
+    box-shadow: none;
+    background: var(--white);
+    border: var(--normal_border);
+    border-radius: var(--border-radius);
+
+    &:focus {
+        border-color: var(--primary);
+        outline: var(--border_width) solid var(--primary);
+    }
+
+    &::placeholder {
+        color: var(--g3);
+    }
+}
+
+input[type="file"] {
+    position: absolute;
+    opacity: 0.001;
+    pointer-events: none;
+    height: 1px;
+    width: 1px;
+}
+
+button,
+.button,
+label.fileInput,
+input[type="text"],
+input[type="submit"],
+textarea,
+[contenteditable] {
+    margin: 0 1em 1em 0;
+}
+
+textarea,
+[contenteditable],
+input[type="text"] {
+    font-variation-settings: "CASL" 1;
+    line-height: 1.37;
+}
+
+textarea,
+[contenteditable] {
+    width: 100%;
+    padding: 1em;
+    height: 8em;
+    max-height: 100vh;
+    overflow-y: auto;
+
+    &:placeholder-shown {
+        background: var(--g5);
+        border-color: var(--g4);
+
+        &:focus {
+            border-color: var(--primary);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: inherit;
+        }
+    }
+}
+
+button,
+label.fileInput,
+.button,
+input[type="submit"],
+input[type="text"],
+select,
+label {
+    padding: 0.37em 0.63em;
+    margin: 0 1em 1em 0;
+}
+
+button,
+label.fileInput,
+.button,
+input[type="submit"],
+select,
+option {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+button,
+label.fileInput,
+.button,
+input[type="submit"] {
+    background: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background: var(--tint);
+    }
+}
+
+label[for] {
+    cursor: pointer;
+}
+
+select {
+    border-color: var(--g4);
+    padding-right: 1.85em;
+    background-image: url("/assets/icons/select.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.85em auto;
+
+    optgroup {
+        font-weight: 400;
+        background: var(--white);
+    }
+}
+
+label {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+label:not([for]) {
+    font-variation-settings: "slnt" -15, "CASL" 1;
+}

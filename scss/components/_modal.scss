@@ -1,0 +1,44 @@
+#modal {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    display: grid;
+    place-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: var(--shade);
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .actions * {
+        margin-bottom: 0;
+    }
+
+    .content {
+        box-shadow: var(--shadow);
+        min-width: 30vw;
+        padding: 2em;
+        transform: translateY(calc(var(--animation_intensity) * 100%));
+        transition: var(--medium_transition);
+    }
+
+    input[type="text"] {
+        font-size: 1rem;
+        padding: 1em;
+        width: 100%;
+    }
+
+    .question {
+        display: flex;
+    }
+
+    input[type="submit"] {
+        font-size: 1rem;
+    }
+}

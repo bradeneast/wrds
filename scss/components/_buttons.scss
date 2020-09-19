@@ -1,0 +1,78 @@
+button,
+label.fileInput,
+a.button,
+input[type="submit"] {
+    user-select: none;
+    border: var(--normal_border);
+    border-color: transparent;
+    border-radius: var(--border-radius);
+
+    &:focus {
+        border-color: var(--primary) !important;
+    }
+
+    &.move,
+    &.remove,
+    &.cancel,
+    &[data-accordion-toggle] {
+        color: var(--g3);
+        border: none;
+        padding: 0;
+
+        &:hover,
+        &:focus {
+            color: var(--g0);
+        }
+    }
+
+    &.cancel::after,
+    &.remove::after {
+        text-decoration: inherit;
+    }
+
+    &.cancel {
+        text-decoration: underline;
+        background: none;
+        margin-left: auto;
+    }
+
+    &.move {
+        padding: 0.37em;
+        margin-right: 0;
+    }
+
+    &.next,
+    &.previous {
+        border-color: var(--white);
+    }
+
+    &.remove {
+        text-decoration: underline;
+        background: none;
+        margin-left: 0;
+    }
+
+    &.primary,
+    &.secondary,
+    &.destructive {
+        border: var(--normal_border);
+    }
+
+    &.primary {
+        border-color: var(--primary);
+    }
+
+    &.secondary {
+        border-color: var(--green);
+    }
+
+    &.destructive {
+        border-color: var(--red);
+    }
+
+    &[disabled] {
+        filter: grayscale(1);
+        opacity: 0.37;
+        pointer-events: none;
+    }
+}

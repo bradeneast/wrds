@@ -1,0 +1,52 @@
+[data-tooltip] {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    border: 0.1em solid currentColor;
+    justify-self: flex-end;
+    margin-left: auto;
+    z-index: 9;
+    font-size: small;
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--g3);
+
+    &::before {
+        content: "?";
+    }
+
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 63%;
+        right: 63%;
+        transform-origin: top right;
+        border-radius: 1em 0 1em 1em;
+        min-width: 14em;
+        padding: 1em;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        border: var(--normal_border);
+        pointer-events: none;
+        transform: scale(calc(1 - var(--animation_intensity)));
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    &:hover,
+    &:focus {
+        color: var(--g1);
+        border-color: currentColor;
+        background: var(--white);
+
+        &::after {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+    }
+}

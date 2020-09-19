@@ -1,0 +1,71 @@
+{
+  "bundle": {
+    "commonSourceDirectory": "../app",
+    "sourceFiles": [
+      "../app/app.min.js"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 620,
+          "kind": "emitHelpers",
+          "data": "typescript:extends"
+        },
+        {
+          "pos": 622,
+          "end": 853,
+          "kind": "emitHelpers",
+          "data": "typescript:makeTemplateObject"
+        },
+        {
+          "pos": 855,
+          "end": 1543,
+          "kind": "emitHelpers",
+          "data": "typescript:awaiter"
+        },
+        {
+          "pos": 1545,
+          "end": 3361,
+          "kind": "emitHelpers",
+          "data": "typescript:generator"
+        },
+        {
+          "pos": 3363,
+          "end": 3833,
+          "kind": "emitHelpers",
+          "data": "typescript:values"
+        },
+        {
+          "pos": 3835,
+          "end": 4339,
+          "kind": "emitHelpers",
+          "data": "typescript:read"
+        },
+        {
+          "pos": 4341,
+          "end": 4511,
+          "kind": "emitHelpers",
+          "data": "typescript:spread"
+        },
+        {
+          "pos": 4513,
+          "end": 81964,
+          "kind": "text"
+        }
+      ],
+      "sources": {
+        "helpers": [
+          "typescript:extends",
+          "typescript:makeTemplateObject",
+          "typescript:awaiter",
+          "typescript:generator",
+          "typescript:values",
+          "typescript:read",
+          "typescript:spread"
+        ]
+      }
+    }
+  },
+  "version": "4.0.2"
+}

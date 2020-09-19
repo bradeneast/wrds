@@ -1,0 +1,22 @@
+#preview {
+    padding: 2rem;
+    max-width: 100%;
+    overflow: auto;
+    overflow-x: scroll !important;
+
+    .content {
+        transform-origin: top left;
+        transform: scale(var(--preview_zoom));
+    }
+}
+
+#preview_header {
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 100%;
+    align-items: center;
+    padding: 0.5rem 1rem 0.5rem 0;
+    background: var(--white);
+    border-bottom: var(--normal_border);
+}

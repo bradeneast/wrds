@@ -1,0 +1,27 @@
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: "Recursive", "Consolas", monospace;
+  font-variation-settings: "MONO" 1;
+  letter-spacing: 0.063em;
+  font-weight: 500;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
+  color: var(--g2);
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+}
+
+.token.newline::after {
+  content: "\000a";
+}

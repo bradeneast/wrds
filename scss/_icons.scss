@@ -1,0 +1,117 @@
+button,
+.button,
+label {
+    &::before,
+    &::after {
+        display: inline-block;
+        opacity: 0.63;
+    }
+
+    &[title]::after {
+        content: attr(title);
+    }
+
+    &[data-icon]::before {
+        transform: translateY(0.12em);
+        width: 1em;
+        height: auto;
+    }
+
+    &:hover,
+    &:focus {
+        &::before,
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+::-webkit-resizer {
+    opacity: 0.63;
+    background: url("/assets/icons/resize.svg");
+}
+
+[title*="Edit"]::before {
+    content: url("/assets/icons/edit.svg");
+}
+
+[title*="New"]::before,
+[data-icon="add_another"]::before {
+    content: url("/assets/icons/add.svg");
+}
+
+[title="Redo"]::before {
+    content: url("/assets/icons/redo.svg");
+}
+
+[title="Undo"]::before {
+    content: url("/assets/icons/undo.svg");
+}
+
+[title="Clear Data"]::before {
+    content: url("/assets/icons/clear.svg");
+}
+
+[title="Zoom In"]::before {
+    content: url("/assets/icons/zoom_in.svg");
+}
+
+[title="Zoom Out"]::before {
+    content: url("/assets/icons/zoom_out.svg");
+}
+
+[title="Export Data"]::before {
+    content: url("/assets/icons/share.svg");
+}
+
+[title="Import Data"]::before {
+    content: url("/assets/icons/import.svg");
+}
+
+[title="Add Field"]::before {
+    content: url("/assets/icons/field.svg");
+}
+
+[title="Switch to Preview"]::before {
+    content: url("/assets/icons/preview.svg");
+}
+
+.previous::before,
+[title="Switch to Content Editor"]::before {
+    content: url("/assets/icons/left.svg");
+}
+
+.next::before,
+[title="Switch to Style Editor"]::before {
+    content: url("/assets/icons/right.svg");
+}
+
+[title="Finish"]::before {
+    content: url("/assets/icons/check.svg");
+}
+
+[title="Print"]::before {
+    content: url("/assets/icons/print.svg");
+}
+
+[data-icon="add_sub"]::before {
+    content: url("/assets/icons/add_sub.svg");
+}
+
+#dark_mode_toggle::before {
+    content: url("/assets/icons/light_dark.svg");
+}
+
+#advanced_toggle::before {
+    content: url("/assets/icons/advanced.svg");
+}
+
+.moveUp::before,
+[data-accordion-hook="open"] [data-accordion-toggle]::before {
+    content: url("/assets/icons/up.svg");
+}
+
+.moveDown::before,
+[data-accordion-hook="closed"] [data-accordion-toggle]::before {
+    content: url("/assets/icons/down.svg");
+}
