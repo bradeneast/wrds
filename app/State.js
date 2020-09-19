@@ -48,9 +48,7 @@ const options = {
 // Recover Saved Data
 let recoveredState;
 try {
-    recoveredState = JSON.parse(
-        localStorage.getItem('State')
-    );
+    recoveredState = JSON.parse(localStorage.getItem('State'));
 } catch (e) {
     console.log("No previous data found.");
 }
@@ -60,13 +58,13 @@ const State = recoveredState || {
     now: {
         children: [],
         fieldTypes: [],
-        globalTypes: depthNames.map(
-            depthName => new GlobalType(depthName)
-        ).concat(
-            Object.values(globalTypeNames).map(
-                globalTypeName => new GlobalType(globalTypeName)
-            )
-        ),
+        globalTypes: depthNames
+            .map(depthName => new GlobalType(depthName))
+            .concat(
+                Object
+                    .values(globalTypeNames)
+                    .map(globalTypeName => new GlobalType(globalTypeName))
+            ),
         selected: {
             fieldType: {},
             globalType: {},

@@ -423,12 +423,7 @@ var __spread = (this && this.__spread) || function () {
         }
         return new ma(a, c, "html", db);
     };
-    var t = function (a) { return document.getElementById(a); };
-    function Y() { return Math.round(new Date().getTime() * Math.random()); }
-    function Z(a) {
-        if (a === void 0) { a = ""; }
-        return a.replace(/\W+|[-_]/g, "-");
-    }
+    var t = function (a) { return document.getElementById(a); }, q = function (a) { return parseInt(a.closest("section").id); }, U = function (a) { return parseInt(a.closest(".field").id); }, Y = function () { return Math.round(new Date().getTime() * Math.random()); }, Z = function (a) { return a.replace(/\W+|[-_]/g, "-"); };
     function z(a, c) {
         var a_2, a_2_1, d, _b, e_7_1;
         var e_7, _c;
@@ -471,8 +466,6 @@ var __spread = (this && this.__spread) || function () {
             }
         });
     }
-    function q(a) { var c = a.closest("section"); return parseInt(c.id); }
-    function U(a) { var c = a.closest(".field"); return parseInt(c.id); }
     function D(a) {
         var e_8, _b;
         var c;
@@ -495,14 +488,8 @@ var __spread = (this && this.__spread) || function () {
         return c;
     }
     function ka(a) { var c = a.closest("section"), d = c.getAttribute("data-section-depth"); return parseInt(d); }
-    function ha(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d - 1, 0, f), s(), n(), b.hasChanged = !0, document.activeElement.blur(); try {
-        (_b = document.querySelector("[id=\"" + f.id + "\"] .moveUp")) === null || _b === void 0 ? void 0 : _b.focus();
-    }
-    catch (h) { } }
-    function ga(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d + 1, 0, f), s(), n(), b.hasChanged = !0, document.activeElement.blur(); try {
-        (_b = document.querySelector("[id=\"" + f.id + "\"] .moveDown")) === null || _b === void 0 ? void 0 : _b.focus();
-    }
-    catch (h) { } }
+    function ha(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d - 1, 0, f), s(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveUp")) === null || _b === void 0 ? void 0 : _b.focus(); }
+    function ga(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d + 1, 0, f), s(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveDown")) === null || _b === void 0 ? void 0 : _b.focus(); }
     function L() {
         var e_9, _b;
         var _c, _d;

@@ -1,6 +1,6 @@
 import { html } from "../libraries/lit-html/lit-html.js";
 import { State } from "../State.js";
-import { escapeSelector } from "../functions/utils.js";
+import { dashify } from "../functions/utils.js";
 import snarkdown from '../libraries/snarkdown/snarkdown.js';
 
 export default (field) => {
@@ -14,7 +14,7 @@ export default (field) => {
     }
 
     return html`
-    <div class=${escapeSelector(type?.name || '' )}>
+    <div class=${dashify(type?.name || '')}>
         ${content}
     </div>`;
 
