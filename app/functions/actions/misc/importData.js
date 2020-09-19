@@ -1,6 +1,6 @@
 import { State } from '../../../State.js';
+import { renderAll } from '../../render.js';
 import { relinkStringifiedObjects } from '../../utils.js';
-import { renderContentEditor, renderToolbar, renderPreview, renderStyleEditor, renderStyles } from '../../render.js';
 
 export default (event) => {
 
@@ -12,11 +12,7 @@ export default (event) => {
         let parsed = JSON.parse(this.result);
         Object.keys(State).map(key => State[key] = parsed[key]);
         relinkStringifiedObjects();
-        renderContentEditor();
-        renderToolbar();
-        renderPreview();
-        renderStyleEditor();
-        renderStyles();
+        renderAll();
     }
 
     document.body.classList.add('importing');

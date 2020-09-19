@@ -1,7 +1,7 @@
 import { State, DOM } from "../../../State.js";
-import { renderStyleEditor, renderContentEditor, renderPreview, renderModal, renderToolbar } from "../../render.js";
 import linkFieldTypes from "./linkFieldTypes.js";
 import { FieldType, Template } from "../../../Classes.js";
+import { renderAll, renderModal } from "../../render.js";
 
 
 export default (type) => {
@@ -35,12 +35,6 @@ export default (type) => {
 
     State.now.editing = {};
     State.hasChanged = true;
-
-    renderContentEditor();
-    renderToolbar();
-    renderPreview();
-    renderStyleEditor();
-
+    renderAll();
     renderModal(null);
-
 }

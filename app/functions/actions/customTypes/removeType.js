@@ -1,5 +1,5 @@
 import { State } from "../../../State.js";
-import { renderContentEditor, renderStyleEditor, renderStyles, renderPreview, renderModal, renderToolbar } from "../../render.js";
+import { renderAll, renderModal } from "../../render.js";
 
 export default (type) => {
 
@@ -18,12 +18,6 @@ export default (type) => {
 
     State.now.editing = {};
     State.hasChanged = true;
-
+    renderAll();
     renderModal(null);
-    renderContentEditor();
-    renderToolbar();
-    renderStyleEditor();
-    renderStyles();
-    renderPreview();
-
 }

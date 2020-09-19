@@ -15,7 +15,5 @@ export default (direction = '') => {
         State.hasChanged = true;
 
         renderToolbar();
-
     }
-
 }

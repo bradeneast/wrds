@@ -1,5 +1,5 @@
 import { State } from '../../../State.js';
-import { renderContentEditor, renderToolbar, renderPreview, renderStyleEditor, renderStyles } from '../../render.js';
+import { renderAll } from '../../render.js';
 import { Section } from '../../../Classes.js';
 
 export default (e) => {
@@ -19,12 +19,7 @@ export default (e) => {
         advancedUI: false
     };
 
-    renderContentEditor();
-    renderToolbar();
-    renderPreview();
-    renderStyleEditor();
-    renderStyles();
-
+    renderAll();
     State.now.children.push(new Section());
     renderContentEditor();
     State.hasChanged = true;

@@ -12,6 +12,15 @@ import {
 import styles from "./actions/styles.js";
 
 
+export async function renderAll() {
+    renderContentEditor();
+    renderToolbar();
+    renderPreview();
+    renderStyleEditor();
+    renderStyles();
+}
+
+
 export async function renderPreview() {
     render(
         html`
@@ -92,7 +101,7 @@ export function renderContentEditor() {
         </div>
         
         ${State.now.children.map((section, index) =>
-        contentEditor(section, State.now, index)
+            contentEditor(section, State.now, index)
         )}
         `,
         DOM.contentEditorPane

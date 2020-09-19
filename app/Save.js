@@ -1,6 +1,10 @@
 import { State } from "./State.js";
 import { renderToolbar } from "./functions/render.js";
 
+/** @module Save */
+/**Asynchronously save the current State object to `localStorage`
+ * @param {boolean}force - save even if `State` hasn't changed
+*/
 export default async function Save(force = false) {
 
     if (!State.hasChanged && !force) return;

@@ -1,11 +1,4 @@
-import {
-    renderContentEditor,
-    renderStyleEditor,
-    renderPreview,
-    renderStyles,
-    renderToolbar,
-    renderMobileNav
-} from './functions/render.js';
+import { renderAll } from './functions/render.js';
 import { State, options } from './State.js';
 import Save from './Save.js';
 import { relinkStringifiedObjects } from './functions/utils.js';
@@ -18,12 +11,7 @@ if (State.isNewUser && !State.now.children.length) {
 }
 
 relinkStringifiedObjects();
-renderContentEditor();
-renderToolbar();
-renderPreview();
-renderStyleEditor();
-renderMobileNav();
-renderStyles();
+renderAll();
 
 setInterval(Save, options.saveInterval);
 

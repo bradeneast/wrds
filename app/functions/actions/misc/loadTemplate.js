@@ -1,5 +1,5 @@
 import { State } from "../../../State.js";
-import { renderStyleEditor, renderStyles, renderToolbar, renderContentEditor, renderPreview } from "../../render.js";
+import { renderAll } from "../../render.js";
 import { relinkStringifiedObjects } from "../../utils.js";
 
 export default (e) => {
@@ -12,11 +12,7 @@ export default (e) => {
         if (temp.id == e.target.value) {
             State.now.selected.template = temp;
             relinkStringifiedObjects();
-            renderContentEditor();
-            renderToolbar();
-            renderPreview();
-            renderStyleEditor();
-            renderStyles();
+            renderAll();
 
             State.hasChanged = true;
             break;
