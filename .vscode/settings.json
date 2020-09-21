@@ -10,7 +10,7 @@
     "saveAndRun": {
         "commands": [
             {
-                "cmd": "esbuild --bundle --minify ./app/_main.js --outfile=./assets/app/app.min.js",
+                "cmd": "esbuild --bundle --minify ./app/_main.js --outfile=./assets/temp/app.min.js",
                 "match": "app.*\\.js",
             },
             {
