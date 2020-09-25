@@ -1,6 +1,5 @@
 import { State } from "./State.js";
 import { renderToolbar } from "./functions/render.js";
-import { $ } from "./functions/utils.js";
 
 /** @module Save */
 /**Asynchronously save the current State object to `localStorage`
@@ -30,9 +29,6 @@ export default async function Save(force = false) {
     // Update last saved
     State.hasChanged = false;
     State.lastSaved = new Date().getTime();
-
-    $('savedIndicator').classList.add('paused');
-    setTimeout(() => $('savedIndicator').classList.remove('paused'), 100);
 
     // Prepare export data
     let json = JSON.stringify(State, (key, value) =>

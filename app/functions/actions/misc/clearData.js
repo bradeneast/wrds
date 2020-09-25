@@ -1,8 +1,8 @@
 import { depthNames, globalTypeNames, State } from '../../../State.js';
-import { renderAll } from '../../render.js';
+import { renderAll, renderContentEditor } from '../../render.js';
 import { GlobalType, Section } from '../../../Classes.js';
 
-GlobalType
+
 export default (e) => {
 
     State.now.children = [new Section()];
@@ -22,8 +22,5 @@ export default (e) => {
     State.templates = [];
 
     renderAll();
-    State.now.children.push(new Section());
-    renderContentEditor();
     State.hasChanged = true;
-
 }
