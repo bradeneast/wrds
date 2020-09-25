@@ -1,6 +1,6 @@
 {
   "files": [
-    "./assets/app/app.min.js"
+    "./assets/temp/app.min.js"
   ],
   "exclude": [
     "**/node_modules",
