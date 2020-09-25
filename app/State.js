@@ -60,10 +60,9 @@ const State = recoveredState || {
         fieldTypes: [],
         globalTypes: depthNames
             .map(depthName => new GlobalType(depthName))
-            .concat(
-                Object
-                    .values(globalTypeNames)
-                    .map(globalTypeName => new GlobalType(globalTypeName))
+            .concat(Object
+                .values(globalTypeNames)
+                .map(globalTypeName => new GlobalType(globalTypeName))
             ),
         selected: {
             fieldType: {},
