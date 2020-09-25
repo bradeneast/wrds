@@ -156,6 +156,10 @@ footer {
     display: none;
 }
 
+.paused {
+    animation-play-state: paused;
+}
+
 @import "./components/_index";
 @import "./typography";
 @import "./editors";

@@ -148,6 +148,11 @@ footer {
   display: none;
 }
 
+.paused {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
 textarea,
 [contenteditable],
 input,
@@ -555,9 +560,10 @@ input[type="submit"][disabled] {
 }
 
 .configuration {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 0.37em;
   padding: 0 1rem;
   border-right: var(--normal_border);
   margin-bottom: 0.37rem;
@@ -570,7 +576,7 @@ input[type="submit"][disabled] {
 }
 
 .configuration label {
-  margin: 0 0.37em;
+  margin: 0;
   border: var(--normal_border);
   border-color: transparent;
 }
@@ -628,94 +634,6 @@ input[type="submit"][disabled] {
 
 #modal input[type="submit"] {
   font-size: 1rem;
-}
-
-#walkthrough_dialogue {
-  position: absolute;
-  max-width: 24em;
-  font-size: large;
-  top: 0;
-  left: 0;
-  padding: 1em 1em 0 1em;
-  color: var(--white);
-  background: var(--primary);
-  z-index: 99;
-  -webkit-box-shadow: var(--shadow);
-          box-shadow: var(--shadow);
-  overflow: visible;
-}
-
-#walkthrough_dialogue:not(.active) {
-  display: none;
-}
-
-#walkthrough_dialogue[data-position="center"]::before {
-  display: none;
-}
-
-#walkthrough_dialogue[data-position="above"]::before {
-  top: 100%;
-}
-
-#walkthrough_dialogue[data-position="asideLeft"]::before {
-  top: calc(1em + 0.37em);
-  left: 100%;
-}
-
-#walkthrough_dialogue[data-position="asideRight"]::before {
-  top: calc(1em + 0.37em);
-  left: 0;
-}
-
-#walkthrough_dialogue::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1em;
-  height: 1em;
-  left: calc(1em + 0.37em);
-  top: 0;
-  -webkit-transform: translate(-50%, -50%) rotate(45deg);
-          transform: translate(-50%, -50%) rotate(45deg);
-  background: inherit;
-}
-
-#walkthrough_dialogue a:hover, #walkthrough_dialogue a:focus {
-  color: var(--g0);
-}
-
-#walkthrough_dialogue .actions {
-  margin-top: 1em;
-}
-
-#walkthrough_dialogue button {
-  color: var(--g2);
-  background: var(--white);
-}
-
-#walkthrough_dialogue button[disabled] {
-  display: none;
-}
-
-#walkthrough_dialogue button:hover, #walkthrough_dialogue button:focus {
-  border-color: currentColor;
-  color: var(--g0);
-}
-
-#walkthrough_dialogue button.cancel {
-  background: none;
-  margin-left: auto;
-  color: var(--white);
-  opacity: 0.63;
-}
-
-#walkthrough_dialogue button.cancel:hover, #walkthrough_dialogue button.cancel:focus {
-  opacity: 1;
-}
-
-.walkthroughFocus {
-  outline: 0.37em solid var(--primary);
-  z-index: 5;
 }
 
 #preview {

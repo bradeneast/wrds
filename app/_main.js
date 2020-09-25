@@ -2,7 +2,7 @@ import { renderAll } from './functions/render.js';
 import { State, options } from './State.js';
 import Save from './Save.js';
 import { relinkStringifiedObjects } from './functions/utils.js';
-import { Field, Section } from './Classes.js';
+import { Section } from './Classes.js';
 
 if (State.isNewUser && !State.now.children.length) {
     State.now.children.push(new Section());

@@ -4,7 +4,9 @@
 }
 
 .configuration {
-    display: inline-flex;
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 0.37em;
     padding: 0 1rem;
     border-right: var(--normal_border);
     margin-bottom: 0.37rem;
@@ -16,7 +18,7 @@
     }
 
     label {
-        margin: 0 0.37em;
+        margin: 0;
         border: var(--normal_border);
         border-color: transparent;
     }
