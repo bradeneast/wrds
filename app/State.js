@@ -67,7 +67,6 @@ const State = recoveredState || {
         selected: {
             fieldType: {},
             globalType: {},
-            template: {},
         },
         editing: {},
     },
@@ -80,7 +79,6 @@ const State = recoveredState || {
     },
     walkthroughIndex: 0,
     history: [],
-    templates: [],
     hasChanged: false,
     isNewUser: true,
     isMobile: innerWidth <= options.mobileBreakpoint,

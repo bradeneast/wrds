@@ -1,9 +1,7 @@
-import { html, nothing } from '../libraries/lit-html/lit-html.js';
+import { html } from '../libraries/lit-html/lit-html.js';
 import { State } from '../State.js';
 import NavigateHistory from '../NavigateHistory.js';
 import { misc } from '../functions/actions.js';
-import { renderModal } from '../functions/render.js';
-import loadTemplate from '../functions/actions/misc/loadTemplate.js';
 
 export default () => {
 
@@ -40,24 +38,6 @@ export default () => {
         <button data-icon id="advanced_toggle" ?aria-pressed=${settings.advancedUI} title=${(settings.advancedUI ? 'Disable'
             : 'Enable' ) + " Advanced UI" } @click=${misc.toggleAdvancedUI}>
         </button>
-    </div>
-    
-    <!-- Template Management -->
-    <div class=configuration id=manageTemplates>
-        <!-- Select Template -->
-        ${State.templates.length 
-            ? html`<select title=${"Current Template: " + State.now.selected.template.name} @input=${loadTemplate}>
-                ${State.templates.map(template => {
-                    let temp = JSON.parse(template);
-                    let isSelected = State.now.selected.template.id == temp.id;
-                    return html`<option ?selected=${isSelected} value=${temp.id}>${temp.name}</option>`
-                })}
-            </select>
-            <button data-icon title=" Edit Template" @click=${renderModal.bind(this, 'template', true)}></button>` 
-            : nothing}
-    
-        <!-- Save New Template -->
-        <button data-icon title="New Template" @click=${renderModal.bind(this, 'template' , false)}></button>
     </div>
     
     <!-- Print Document -->

@@ -32,7 +32,7 @@ class GlobalType {
     }
 }
 
-/**Represents a Custom Object (Template | Field Type)*/
+/**Represents a Custom Object (Field Type)*/
 class Custom {
     constructor(name) {
         this.id = random();
@@ -49,20 +49,9 @@ class FieldType extends Custom {
     }
 }
 
-/**Represents a custom set of Field Types and Global Types*/
-class Template extends Custom {
-    constructor(name) {
-        super(name);
-        this.type = 'template';
-        this.fieldTypes = [];
-        this.globalTypes = [];
-    }
-}
-
 export {
     Section,
     Field,
     FieldType,
-    Template,
     GlobalType,
 }

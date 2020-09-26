@@ -1,5 +1,5 @@
 import { depthNames, globalTypeNames, State } from '../../../State.js';
-import { renderAll, renderContentEditor } from '../../render.js';
+import { renderAll } from '../../render.js';
 import { GlobalType, Section } from '../../../Classes.js';
 
 
@@ -17,9 +17,7 @@ export default (e) => {
     State.now.selected = {
         fieldType: {},
         globalType: {},
-        template: {},
     };
-    State.templates = [];
 
     renderAll();
     State.hasChanged = true;

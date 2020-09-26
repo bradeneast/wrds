@@ -144,9 +144,6 @@ export function moveDown(parentObject, key, index) {
 
 /**Serializes `JSON.stringified()` data back into the current State*/
 export function relinkStringifiedObjects() {
-    State.now.fieldTypes = State.now.selected.template.fieldTypes || [];
-    State.now.globalTypes = State.now.selected.template.globalTypes || State.now.globalTypes;
-
     State.now.selected.fieldType = State.now.fieldTypes?.[0] || {};
     State.now.selected.globalType = State.now.globalTypes?.[0] || {};
 
