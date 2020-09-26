@@ -10,20 +10,11 @@ export default () => {
     return html`
     <!-- Undo/Redo -->
     <div class=configuration id=undo_redo>
-        <button data-icon title=Undo ?disabled=${State.nowIndex==0} @click=${NavigateHistory.bind(this, -1)}>
+        <button data-icon title=Undo ?disabled=${State.nowIndex == 0} @click=${NavigateHistory.bind(this, -1)}>
         </button>
-        <button data-icon title=Redo ?disabled=${State.nowIndex>= State.history.length - 1}
+        <button data-icon title=Redo ?disabled=${State.nowIndex >= State.history.length - 1}
             @click=${NavigateHistory.bind(this, 1)}>
         </button>
-    </div>
-    
-    <!-- Zoom -->
-    <div class=configuration id=zoom>
-        <button data-icon title="Zoom Out" @click=${misc.zoom.bind(this, 'out' )}>
-        </button>
-        <button data-icon title="Zoom In" @click=${misc.zoom.bind(this, 'in' )}>
-        </button>
-        <label>${'(' + Math.round(settings.zoom * 100) + '%)'}</label>
     </div>
     
     <!-- Toggle Dark Mode -->
@@ -36,7 +27,7 @@ export default () => {
     <!-- Toggle Advanced UI -->
     <div class=configuration id=advancedUI_toggle>
         <button data-icon id="advanced_toggle" ?aria-pressed=${settings.advancedUI} title=${(settings.advancedUI ? 'Disable'
-            : 'Enable' ) + " Advanced UI" } @click=${misc.toggleAdvancedUI}>
+            : 'Enable') + " Advanced UI"} @click=${misc.toggleAdvancedUI}>
         </button>
     </div>
     

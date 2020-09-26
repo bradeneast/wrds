@@ -37,11 +37,6 @@ const options = {
     throttle: 60,
     mobileBreakpoint: 960,
     saveInterval: 2000,
-    zoom: {
-        min: .5,
-        max: 2,
-        interval: .1,
-    }
 }
 
 
@@ -72,7 +67,6 @@ const State = recoveredState || {
     },
     nowIndex: 0,
     settings: {
-        zoom: 1,
         darkMode: false,
         advancedUI: false,
         messagesShown: false,

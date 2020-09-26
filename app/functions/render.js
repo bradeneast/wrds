@@ -35,7 +35,6 @@ export async function renderPreview() {
 export async function renderToolbar() {
 
     let root = document.documentElement;
-    root.style.setProperty('--preview_zoom', State.settings.zoom);
     root.classList.toggle('dark_mode', State.settings.darkMode);
     root.classList.toggle('advanced', State.settings.advancedUI);
 
@@ -101,7 +100,7 @@ export function renderContentEditor() {
         </div>
         
         ${State.now.children.map((section, index) =>
-            contentEditor(section, State.now, index)
+        contentEditor(section, State.now, index)
         )}
         `,
         DOM.contentEditorPane
