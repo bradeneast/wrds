@@ -838,10 +838,9 @@ var __spread = (this && this.__spread) || function () {
             if (!b.hasChanged && !a)
                 return [2];
             b.templates.map(function (f, i) { var h = JSON.parse(f), l = h.id == b.now.selected.template.id; l && b.templates.splice(i, 1, JSON.stringify(b.now.selected.template)); }), localStorage.setItem("State", JSON.stringify(b)), b.history.push(JSON.stringify(b.now)), b.nowIndex = b.history.length - 1, b.history.length > 250 && b.history.splice(0, 1), b.hasChanged = !1, b.lastSaved = new Date().getTime();
-            c = JSON.stringify(b, function (f, i) { switch (f) {
-                case "history": return [];
-                case "settings": return {};
-            } }), d = new Blob([c], { type: "application/json" }), e = URL.createObjectURL(d);
+            c = JSON.stringify(b, function (f, i) { return f == "history" ? [] : f == "settings" ? {} : i; });
+            console.log(c);
+            d = new Blob([c], { type: "application/json" }), e = URL.createObjectURL(d);
             b.forExport = e, D();
             return [2];
         }); });

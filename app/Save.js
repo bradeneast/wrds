@@ -32,11 +32,11 @@ export default async function Save(force = false) {
 
     // Prepare export data
     let json = JSON.stringify(State, (key, value) => {
-        switch (key) {
-            case ('history'): return [];
-            case ('settings'): return {};
-        }
+        if (key == 'history') return [];
+        else if (key == 'settings') return {};
+        else return value;
     });
+    console.log(json);
     let data = new Blob([json], { type: 'application/json' });
     let jsonFile = URL.createObjectURL(data);
 
