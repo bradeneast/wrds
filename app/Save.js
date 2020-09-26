@@ -31,9 +31,12 @@ export default async function Save(force = false) {
     State.lastSaved = new Date().getTime();
 
     // Prepare export data
-    let json = JSON.stringify(State, (key, value) =>
-        key == 'history' ? [] : value
-    );
+    let json = JSON.stringify(State, (key, value) => {
+        switch (key) {
+            case ('history'): return [];
+            case ('settings'): return {};
+        }
+    });
     let data = new Blob([json], { type: 'application/json' });
     let jsonFile = URL.createObjectURL(data);
 

@@ -84,77 +84,77 @@ var __spread = (this && this.__spread) || function () {
 };
 (function () {
     var e_1, _b;
-    var rb = new WeakMap(), W = function (a) { return typeof a === "function" && rb.has(a); };
-    var wa = typeof window !== "undefined" && window.customElements != null && window.customElements.polyfillWrapFlushCallback !== void 0, la = function (a, c, d) {
+    var ub = new WeakMap(), W = function (a) { return typeof a === "function" && ub.has(a); };
+    var ya = typeof window !== "undefined" && window.customElements != null && window.customElements.polyfillWrapFlushCallback !== void 0, na = function (a, c, d) {
         if (d === void 0) { d = null; }
         for (; c !== d;) {
             var e = c.nextSibling;
             a.removeChild(c), c = e;
         }
     };
-    var x = {}, $ = {};
-    var E = "{{lit-" + String(Math.random()).slice(2) + "}}", za = "<!--" + E + "-->", mb = new RegExp(E + "|" + za), X = "$lit$";
-    var jb = (function () {
-        function jb(a, c) {
+    var w = {}, ba = {};
+    var G = "{{lit-" + String(Math.random()).slice(2) + "}}", Ba = "<!--" + G + "-->", qb = new RegExp(G + "|" + Ba), X = "$lit$";
+    var nb = (function () {
+        function nb(a, c) {
             var e_2, _b;
             this.parts = [], this.element = c;
             var d = [], e = [], f = document.createTreeWalker(c.content, 133, null, !1);
-            var h = 0, g = -1, l = 0;
-            var I = a.strings, i = a.values.length;
-            for (; l < i;) {
-                var j = f.nextNode();
-                if (j === null) {
+            var i = 0, h = -1, l = 0;
+            var q = a.strings, Ca = a.values.length;
+            for (; l < Ca;) {
+                var k = f.nextNode();
+                if (k === null) {
                     f.currentNode = e.pop();
                     continue;
                 }
-                g++;
-                if (j.nodeType === 1) {
-                    if (j.hasAttributes()) {
-                        var m = j.attributes, P = m.length;
-                        var F = 0;
-                        for (var o = 0; o < P; o++)
-                            nb(m[o].name, X) && F++;
-                        for (; F-- > 0;) {
-                            var o = I[l], v = na.exec(o)[2], A = v.toLowerCase() + X, Q = j.getAttribute(A);
-                            j.removeAttribute(A);
-                            var J = Q.split(mb);
-                            this.parts.push({ type: "attribute", index: g, name: v, strings: J }), l += J.length - 1;
+                h++;
+                if (k.nodeType === 1) {
+                    if (k.hasAttributes()) {
+                        var x = k.attributes, Y = x.length;
+                        var J = 0;
+                        for (var y = 0; y < Y; y++)
+                            rb(x[y].name, X) && J++;
+                        for (; J-- > 0;) {
+                            var y = q[l], Q = pa.exec(y)[2], K = Q.toLowerCase() + X, L = k.getAttribute(K);
+                            k.removeAttribute(K);
+                            var C = L.split(qb);
+                            this.parts.push({ type: "attribute", index: h, name: Q, strings: C }), l += C.length - 1;
                         }
                     }
-                    j.tagName === "TEMPLATE" && (e.push(j), f.currentNode = j.content);
+                    k.tagName === "TEMPLATE" && (e.push(k), f.currentNode = k.content);
                 }
-                else if (j.nodeType === 3) {
-                    var m = j.data;
-                    if (m.indexOf(E) >= 0) {
-                        var P = j.parentNode, F = m.split(mb), o = F.length - 1;
-                        for (var v = 0; v < o; v++) {
-                            var A = void 0, Q = F[v];
-                            if (Q === "")
-                                A = H();
+                else if (k.nodeType === 3) {
+                    var x = k.data;
+                    if (x.indexOf(G) >= 0) {
+                        var Y = k.parentNode, J = x.split(qb), y = J.length - 1;
+                        for (var Q = 0; Q < y; Q++) {
+                            var K = void 0, L = J[Q];
+                            if (L === "")
+                                K = I();
                             else {
-                                var J = na.exec(Q);
-                                J !== null && nb(J[2], X) && (Q = Q.slice(0, J.index) + J[1] + J[2].slice(0, -X.length) + J[3]), A = document.createTextNode(Q);
+                                var C = pa.exec(L);
+                                C !== null && rb(C[2], X) && (L = L.slice(0, C.index) + C[1] + C[2].slice(0, -X.length) + C[3]), K = document.createTextNode(L);
                             }
-                            P.insertBefore(A, j), this.parts.push({ type: "node", index: ++g });
+                            Y.insertBefore(K, k), this.parts.push({ type: "node", index: ++h });
                         }
-                        F[o] === "" ? (P.insertBefore(H(), j), d.push(j)) : j.data = F[o], l += o;
+                        J[y] === "" ? (Y.insertBefore(I(), k), d.push(k)) : k.data = J[y], l += y;
                     }
                 }
-                else if (j.nodeType === 8)
-                    if (j.data === E) {
-                        var m = j.parentNode;
-                        (j.previousSibling === null || g === h) && (g++, m.insertBefore(H(), j)), h = g, this.parts.push({ type: "node", index: g }), j.nextSibling === null ? j.data = "" : (d.push(j), g--), l++;
+                else if (k.nodeType === 8)
+                    if (k.data === G) {
+                        var x = k.parentNode;
+                        (k.previousSibling === null || h === i) && (h++, x.insertBefore(I(), k)), i = h, this.parts.push({ type: "node", index: h }), k.nextSibling === null ? k.data = "" : (d.push(k), h--), l++;
                     }
                     else {
-                        var m = -1;
-                        for (; (m = j.data.indexOf(E, m + 1)) !== -1;)
+                        var x = -1;
+                        for (; (x = k.data.indexOf(G, x + 1)) !== -1;)
                             this.parts.push({ type: "node", index: -1 }), l++;
                     }
             }
             try {
                 for (var d_1 = __values(d), d_1_1 = d_1.next(); !d_1_1.done; d_1_1 = d_1.next()) {
-                    var j = d_1_1.value;
-                    j.parentNode.removeChild(j);
+                    var k = d_1_1.value;
+                    k.parentNode.removeChild(k);
                 }
             }
             catch (e_2_1) { e_2 = { error: e_2_1 }; }
@@ -165,14 +165,14 @@ var __spread = (this && this.__spread) || function () {
                 finally { if (e_2) throw e_2.error; }
             }
         }
-        return jb;
+        return nb;
     }());
-    var nb = function (a, c) { var d = a.length - c.length; return d >= 0 && a.slice(d) === c; }, lb = function (a) { return a.index !== -1; }, H = function () { return document.createComment(""); }, na = /([ \x09\x0a\x0c\x0d])([^\0-\x1F\x7F-\x9F "'>=/]+)([ \x09\x0a\x0c\x0d]*=[ \x09\x0a\x0c\x0d]*(?:[^ \x09\x0a\x0c\x0d"'`<>=]*|"[^"]*|'[^']*))$/;
-    var xa = (function () {
-        function xa(a, c, d) {
+    var rb = function (a, c) { var d = a.length - c.length; return d >= 0 && a.slice(d) === c; }, pb = function (a) { return a.index !== -1; }, I = function () { return document.createComment(""); }, pa = /([ \x09\x0a\x0c\x0d])([^\0-\x1F\x7F-\x9F "'>=/]+)([ \x09\x0a\x0c\x0d]*=[ \x09\x0a\x0c\x0d]*(?:[^ \x09\x0a\x0c\x0d"'`<>=]*|"[^"]*|'[^']*))$/;
+    var za = (function () {
+        function za(a, c, d) {
             this.__parts = [], this.template = a, this.processor = c, this.options = d;
         }
-        xa.prototype.update = function (a) {
+        za.prototype.update = function (a) {
             var e_3, _b, e_4, _c;
             var c = 0;
             try {
@@ -202,53 +202,53 @@ var __spread = (this && this.__spread) || function () {
                 finally { if (e_4) throw e_4.error; }
             }
         };
-        xa.prototype._clone = function () {
+        za.prototype._clone = function () {
             var _b;
-            var a = wa ? this.template.element.content.cloneNode(!0) : document.importNode(this.template.element.content, !0), c = [], d = this.template.parts, e = document.createTreeWalker(a, 133, null, !1);
-            var f = 0, h = 0, g, l = e.nextNode();
+            var a = ya ? this.template.element.content.cloneNode(!0) : document.importNode(this.template.element.content, !0), c = [], d = this.template.parts, e = document.createTreeWalker(a, 133, null, !1);
+            var f = 0, i = 0, h, l = e.nextNode();
             for (; f < d.length;) {
-                g = d[f];
-                if (!lb(g)) {
+                h = d[f];
+                if (!pb(h)) {
                     this.__parts.push(void 0), f++;
                     continue;
                 }
-                for (; h < g.index;)
-                    h++, l.nodeName === "TEMPLATE" && (c.push(l), e.currentNode = l.content), (l = e.nextNode()) === null && (e.currentNode = c.pop(), l = e.nextNode());
-                if (g.type === "node") {
-                    var I = this.processor.handleTextExpression(this.options);
-                    I.insertAfterNode(l.previousSibling), this.__parts.push(I);
+                for (; i < h.index;)
+                    i++, l.nodeName === "TEMPLATE" && (c.push(l), e.currentNode = l.content), (l = e.nextNode()) === null && (e.currentNode = c.pop(), l = e.nextNode());
+                if (h.type === "node") {
+                    var q = this.processor.handleTextExpression(this.options);
+                    q.insertAfterNode(l.previousSibling), this.__parts.push(q);
                 }
                 else
-                    (_b = this.__parts).push.apply(_b, __spread(this.processor.handleAttributeExpressions(l, g.name, g.strings, this.options)));
+                    (_b = this.__parts).push.apply(_b, __spread(this.processor.handleAttributeExpressions(l, h.name, h.strings, this.options)));
                 f++;
             }
-            return wa && (document.adoptNode(a), customElements.upgrade(a)), a;
+            return ya && (document.adoptNode(a), customElements.upgrade(a)), a;
         };
-        return xa;
+        return za;
     }());
-    var ub = " " + E + " ";
-    var ma = (function () {
-        function ma(a, c, d, e) {
+    var xb = " " + G + " ";
+    var oa = (function () {
+        function oa(a, c, d, e) {
             this.strings = a, this.values = c, this.type = d, this.processor = e;
         }
-        ma.prototype.getHTML = function () { var a = this.strings.length - 1; var c = "", d = !1; for (var e = 0; e < a; e++) {
-            var f = this.strings[e], h = f.lastIndexOf("<!--");
-            d = (h > -1 || d) && f.indexOf("-->", h + 1) === -1;
-            var g = na.exec(f);
-            g === null ? c += f + (d ? ub : za) : c += f.substr(0, g.index) + g[1] + g[2] + X + g[3] + E;
+        oa.prototype.getHTML = function () { var a = this.strings.length - 1; var c = "", d = !1; for (var e = 0; e < a; e++) {
+            var f = this.strings[e], i = f.lastIndexOf("<!--");
+            d = (i > -1 || d) && f.indexOf("-->", i + 1) === -1;
+            var h = pa.exec(f);
+            h === null ? c += f + (d ? xb : Ba) : c += f.substr(0, h.index) + h[1] + h[2] + X + h[3] + G;
         } return c += this.strings[a], c; };
-        ma.prototype.getTemplateElement = function () { var a = document.createElement("template"); return a.innerHTML = this.getHTML(), a; };
-        return ma;
+        oa.prototype.getTemplateElement = function () { var a = document.createElement("template"); return a.innerHTML = this.getHTML(), a; };
+        return oa;
     }());
-    var ya = function (a) { return a === null || !(typeof a === "object" || typeof a === "function"); }, eb = function (a) { return Array.isArray(a) || !!(a && a[Symbol.iterator]); };
-    var va = (function () {
-        function va(a, c, d) {
+    var Aa = function (a) { return a === null || !(typeof a === "object" || typeof a === "function"); }, ib = function (a) { return Array.isArray(a) || !!(a && a[Symbol.iterator]); };
+    var xa = (function () {
+        function xa(a, c, d) {
             this.dirty = !0, this.element = a, this.name = c, this.strings = d, this.parts = [];
             for (var e = 0; e < d.length - 1; e++)
                 this.parts[e] = this._createPart();
         }
-        va.prototype._createPart = function () { return new fb(this); };
-        va.prototype._getValue = function () {
+        xa.prototype._createPart = function () { return new jb(this); };
+        xa.prototype._getValue = function () {
             var e_5, _b;
             var a = this.strings, c = a.length - 1;
             var d = "";
@@ -256,20 +256,20 @@ var __spread = (this && this.__spread) || function () {
                 d += a[e];
                 var f = this.parts[e];
                 if (f !== void 0) {
-                    var h = f.value;
-                    if (ya(h) || !eb(h))
-                        d += typeof h === "string" ? h : String(h);
+                    var i = f.value;
+                    if (Aa(i) || !ib(i))
+                        d += typeof i === "string" ? i : String(i);
                     else
                         try {
-                            for (var h_1 = (e_5 = void 0, __values(h)), h_1_1 = h_1.next(); !h_1_1.done; h_1_1 = h_1.next()) {
-                                var g = h_1_1.value;
-                                d += typeof g === "string" ? g : String(g);
+                            for (var i_1 = (e_5 = void 0, __values(i)), i_1_1 = i_1.next(); !i_1_1.done; i_1_1 = i_1.next()) {
+                                var h = i_1_1.value;
+                                d += typeof h === "string" ? h : String(h);
                             }
                         }
                         catch (e_5_1) { e_5 = { error: e_5_1 }; }
                         finally {
                             try {
-                                if (h_1_1 && !h_1_1.done && (_b = h_1.return)) _b.call(h_1);
+                                if (i_1_1 && !i_1_1.done && (_b = i_1.return)) _b.call(i_1);
                             }
                             finally { if (e_5) throw e_5.error; }
                         }
@@ -277,47 +277,47 @@ var __spread = (this && this.__spread) || function () {
             }
             return d += a[c], d;
         };
-        va.prototype.commit = function () { this.dirty && (this.dirty = !1, this.element.setAttribute(this.name, this._getValue())); };
-        return va;
+        xa.prototype.commit = function () { this.dirty && (this.dirty = !1, this.element.setAttribute(this.name, this._getValue())); };
+        return xa;
     }());
-    var fb = (function () {
-        function fb(a) {
+    var jb = (function () {
+        function jb(a) {
             this.value = void 0, this.committer = a;
         }
-        fb.prototype.setValue = function (a) { a !== x && (!ya(a) || a !== this.value) && (this.value = a, W(a) || (this.committer.dirty = !0)); };
-        fb.prototype.commit = function () { for (; W(this.value);) {
+        jb.prototype.setValue = function (a) { a !== w && (!Aa(a) || a !== this.value) && (this.value = a, W(a) || (this.committer.dirty = !0)); };
+        jb.prototype.commit = function () { for (; W(this.value);) {
             var a = this.value;
-            this.value = x, a(this);
-        } if (this.value === x)
+            this.value = w, a(this);
+        } if (this.value === w)
             return; this.committer.commit(); };
-        return fb;
+        return jb;
     }());
-    var aa = (function () {
-        function aa(a) {
+    var ca = (function () {
+        function ca(a) {
             this.value = void 0, this.__pendingValue = void 0, this.options = a;
         }
-        aa.prototype.appendInto = function (a) { this.startNode = a.appendChild(H()), this.endNode = a.appendChild(H()); };
-        aa.prototype.insertAfterNode = function (a) { this.startNode = a, this.endNode = a.nextSibling; };
-        aa.prototype.appendIntoPart = function (a) { a.__insert(this.startNode = H()), a.__insert(this.endNode = H()); };
-        aa.prototype.insertAfterPart = function (a) { a.__insert(this.startNode = H()), this.endNode = a.endNode, a.endNode = this.startNode; };
-        aa.prototype.setValue = function (a) { this.__pendingValue = a; };
-        aa.prototype.commit = function () { if (this.startNode.parentNode === null)
+        ca.prototype.appendInto = function (a) { this.startNode = a.appendChild(I()), this.endNode = a.appendChild(I()); };
+        ca.prototype.insertAfterNode = function (a) { this.startNode = a, this.endNode = a.nextSibling; };
+        ca.prototype.appendIntoPart = function (a) { a.__insert(this.startNode = I()), a.__insert(this.endNode = I()); };
+        ca.prototype.insertAfterPart = function (a) { a.__insert(this.startNode = I()), this.endNode = a.endNode, a.endNode = this.startNode; };
+        ca.prototype.setValue = function (a) { this.__pendingValue = a; };
+        ca.prototype.commit = function () { if (this.startNode.parentNode === null)
             return; for (; W(this.__pendingValue);) {
             var c = this.__pendingValue;
-            this.__pendingValue = x, c(this);
-        } var a = this.__pendingValue; if (a === x)
-            return; ya(a) ? a !== this.value && this.__commitText(a) : a instanceof ma ? this.__commitTemplateResult(a) : a instanceof Node ? this.__commitNode(a) : eb(a) ? this.__commitIterable(a) : a === $ ? (this.value = $, this.clear()) : this.__commitText(a); };
-        aa.prototype.__insert = function (a) { this.endNode.parentNode.insertBefore(a, this.endNode); };
-        aa.prototype.__commitNode = function (a) { if (this.value === a)
+            this.__pendingValue = w, c(this);
+        } var a = this.__pendingValue; if (a === w)
+            return; Aa(a) ? a !== this.value && this.__commitText(a) : a instanceof oa ? this.__commitTemplateResult(a) : a instanceof Node ? this.__commitNode(a) : ib(a) ? this.__commitIterable(a) : a === ba ? (this.value = ba, this.clear()) : this.__commitText(a); };
+        ca.prototype.__insert = function (a) { this.endNode.parentNode.insertBefore(a, this.endNode); };
+        ca.prototype.__commitNode = function (a) { if (this.value === a)
             return; this.clear(), this.__insert(a), this.value = a; };
-        aa.prototype.__commitText = function (a) { var c = this.startNode.nextSibling; a = a == null ? "" : a; var d = typeof a === "string" ? a : String(a); c === this.endNode.previousSibling && c.nodeType === 3 ? c.data = d : this.__commitNode(document.createTextNode(d)), this.value = a; };
-        aa.prototype.__commitTemplateResult = function (a) { var c = this.options.templateFactory(a); if (this.value instanceof xa && this.value.template === c)
+        ca.prototype.__commitText = function (a) { var c = this.startNode.nextSibling; a = a == null ? "" : a; var d = typeof a === "string" ? a : String(a); c === this.endNode.previousSibling && c.nodeType === 3 ? c.data = d : this.__commitNode(document.createTextNode(d)), this.value = a; };
+        ca.prototype.__commitTemplateResult = function (a) { var c = this.options.templateFactory(a); if (this.value instanceof za && this.value.template === c)
             this.value.update(a.values);
         else {
-            var d = new xa(c, a.processor, this.options), e = d._clone();
+            var d = new za(c, a.processor, this.options), e = d._clone();
             d.update(a.values), this.__commitNode(e), this.value = d;
         } };
-        aa.prototype.__commitIterable = function (a) {
+        ca.prototype.__commitIterable = function (a) {
             var e_6, _b;
             Array.isArray(this.value) || (this.value = [], this.clear());
             var c = this.value;
@@ -325,7 +325,7 @@ var __spread = (this && this.__spread) || function () {
             try {
                 for (var a_1 = __values(a), a_1_1 = a_1.next(); !a_1_1.done; a_1_1 = a_1.next()) {
                     var f = a_1_1.value;
-                    e = c[d], e === void 0 && (e = new aa(this.options), c.push(e), d === 0 ? e.appendIntoPart(this) : e.insertAfterPart(c[d - 1])), e.setValue(f), e.commit(), d++;
+                    e = c[d], e === void 0 && (e = new ca(this.options), c.push(e), d === 0 ? e.appendIntoPart(this) : e.insertAfterPart(c[d - 1])), e.setValue(f), e.commit(), d++;
                 }
             }
             catch (e_6_1) { e_6 = { error: e_6_1 }; }
@@ -337,94 +337,94 @@ var __spread = (this && this.__spread) || function () {
             }
             d < c.length && (c.length = d, this.clear(e && e.endNode));
         };
-        aa.prototype.clear = function (a) {
+        ca.prototype.clear = function (a) {
             if (a === void 0) { a = this.startNode; }
-            la(this.startNode.parentNode, a.nextSibling, this.endNode);
+            na(this.startNode.parentNode, a.nextSibling, this.endNode);
         };
-        return aa;
+        return ca;
     }());
-    var ab = (function () {
-        function ab(a, c, d) {
+    var eb = (function () {
+        function eb(a, c, d) {
             this.value = void 0, this.__pendingValue = void 0;
             if (d.length !== 2 || d[0] !== "" || d[1] !== "")
                 throw new Error("Boolean attributes can only contain a single expression");
             this.element = a, this.name = c, this.strings = d;
         }
-        ab.prototype.setValue = function (a) { this.__pendingValue = a; };
-        ab.prototype.commit = function () { for (; W(this.__pendingValue);) {
+        eb.prototype.setValue = function (a) { this.__pendingValue = a; };
+        eb.prototype.commit = function () { for (; W(this.__pendingValue);) {
             var c = this.__pendingValue;
-            this.__pendingValue = x, c(this);
-        } if (this.__pendingValue === x)
-            return; var a = !!this.__pendingValue; this.value !== a && (a ? this.element.setAttribute(this.name, "") : this.element.removeAttribute(this.name), this.value = a), this.__pendingValue = x; };
-        return ab;
+            this.__pendingValue = w, c(this);
+        } if (this.__pendingValue === w)
+            return; var a = !!this.__pendingValue; this.value !== a && (a ? this.element.setAttribute(this.name, "") : this.element.removeAttribute(this.name), this.value = a), this.__pendingValue = w; };
+        return eb;
     }());
-    var cb = (function (_super) {
-        __extends(cb, _super);
-        function cb(a, c, d) {
+    var gb = (function (_super) {
+        __extends(gb, _super);
+        function gb(a, c, d) {
             var _this = _super.call(this, a, c, d) || this;
             _this.single = d.length === 2 && d[0] === "" && d[1] === "";
             return _this;
         }
-        cb.prototype._createPart = function () { return new sb(this); };
-        cb.prototype._getValue = function () { return this.single ? this.parts[0].value : _super.prototype._getValue.call(this); };
-        cb.prototype.commit = function () { this.dirty && (this.dirty = !1, this.element[this.name] = this._getValue()); };
-        return cb;
-    }(va));
-    var sb = (function (_super) {
-        __extends(sb, _super);
-        function sb() {
+        gb.prototype._createPart = function () { return new vb(this); };
+        gb.prototype._getValue = function () { return this.single ? this.parts[0].value : _super.prototype._getValue.call(this); };
+        gb.prototype.commit = function () { this.dirty && (this.dirty = !1, this.element[this.name] = this._getValue()); };
+        return gb;
+    }(xa));
+    var vb = (function (_super) {
+        __extends(vb, _super);
+        function vb() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
-        return sb;
-    }(fb));
-    var gb = !1;
+        return vb;
+    }(jb));
+    var kb = !1;
     (function () { try {
-        var a = { get capture() { return gb = !0, !1; } };
+        var a = { get capture() { return kb = !0, !1; } };
         window.addEventListener("test", a, a), window.removeEventListener("test", a, a);
     }
     catch (a) { } })();
-    var bb = (function () {
-        function bb(a, c, d) {
+    var fb = (function () {
+        function fb(a, c, d) {
             var _this = this;
             this.value = void 0, this.__pendingValue = void 0, this.element = a, this.eventName = c, this.eventContext = d, this.__boundHandleEvent = function (e) { return _this.handleEvent(e); };
         }
-        bb.prototype.setValue = function (a) { this.__pendingValue = a; };
-        bb.prototype.commit = function () { for (; W(this.__pendingValue);) {
+        fb.prototype.setValue = function (a) { this.__pendingValue = a; };
+        fb.prototype.commit = function () { for (; W(this.__pendingValue);) {
             var f = this.__pendingValue;
-            this.__pendingValue = x, f(this);
-        } if (this.__pendingValue === x)
-            return; var a = this.__pendingValue, c = this.value, d = a == null || c != null && (a.capture !== c.capture || a.once !== c.once || a.passive !== c.passive), e = a != null && (c == null || d); d && this.element.removeEventListener(this.eventName, this.__boundHandleEvent, this.__options), e && (this.__options = tb(a), this.element.addEventListener(this.eventName, this.__boundHandleEvent, this.__options)), this.value = a, this.__pendingValue = x; };
-        bb.prototype.handleEvent = function (a) { typeof this.value === "function" ? this.value.call(this.eventContext || this.element, a) : this.value.handleEvent(a); };
-        return bb;
+            this.__pendingValue = w, f(this);
+        } if (this.__pendingValue === w)
+            return; var a = this.__pendingValue, c = this.value, d = a == null || c != null && (a.capture !== c.capture || a.once !== c.once || a.passive !== c.passive), e = a != null && (c == null || d); d && this.element.removeEventListener(this.eventName, this.__boundHandleEvent, this.__options), e && (this.__options = wb(a), this.element.addEventListener(this.eventName, this.__boundHandleEvent, this.__options)), this.value = a, this.__pendingValue = w; };
+        fb.prototype.handleEvent = function (a) { typeof this.value === "function" ? this.value.call(this.eventContext || this.element, a) : this.value.handleEvent(a); };
+        return fb;
     }());
-    var tb = function (a) { return a && (gb ? { capture: a.capture, passive: a.passive, once: a.once } : a.capture); };
-    var qb = (function () {
-        function qb() {
+    var wb = function (a) { return a && (kb ? { capture: a.capture, passive: a.passive, once: a.once } : a.capture); };
+    var tb = (function () {
+        function tb() {
         }
-        qb.prototype.handleAttributeExpressions = function (a, c, d, e) { var f = c[0]; if (f === ".") {
-            var g = new cb(a, c.slice(1), d);
-            return g.parts;
+        tb.prototype.handleAttributeExpressions = function (a, c, d, e) { var f = c[0]; if (f === ".") {
+            var h = new gb(a, c.slice(1), d);
+            return h.parts;
         } if (f === "@")
-            return [new bb(a, c.slice(1), e.eventContext)]; if (f === "?")
-            return [new ab(a, c.slice(1), d)]; var h = new va(a, c, d); return h.parts; };
-        qb.prototype.handleTextExpression = function (a) { return new aa(a); };
-        return qb;
+            return [new fb(a, c.slice(1), e.eventContext)]; if (f === "?")
+            return [new eb(a, c.slice(1), d)]; var i = new xa(a, c, d); return i.parts; };
+        tb.prototype.handleTextExpression = function (a) { return new ca(a); };
+        return tb;
     }());
-    var db = new qb();
-    function hb(a) { var c = kb.get(a.type); c === void 0 && (c = { stringsArray: new WeakMap(), keyString: new Map() }, kb.set(a.type, c)); var d = c.stringsArray.get(a.strings); if (d !== void 0)
-        return d; var e = a.strings.join(E); return d = c.keyString.get(e), d === void 0 && (d = new jb(a, a.getTemplateElement()), c.keyString.set(e, d)), c.stringsArray.set(a.strings, d), d; }
-    var kb = new Map();
-    var ib = new WeakMap(), O = function (a, c, d) { var e = ib.get(c); e === void 0 && (la(c, c.firstChild), ib.set(c, e = new aa(Object.assign({ templateFactory: hb }, d))), e.appendInto(c)), e.setValue(a), e.commit(); };
+    var hb = new tb();
+    function lb(a) { var c = ob.get(a.type); c === void 0 && (c = { stringsArray: new WeakMap(), keyString: new Map() }, ob.set(a.type, c)); var d = c.stringsArray.get(a.strings); if (d !== void 0)
+        return d; var e = a.strings.join(G); return d = c.keyString.get(e), d === void 0 && (d = new nb(a, a.getTemplateElement()), c.keyString.set(e, d)), c.stringsArray.set(a.strings, d), d; }
+    var ob = new Map();
+    var mb = new WeakMap(), R = function (a, c, d) { var e = mb.get(c); e === void 0 && (na(c, c.firstChild), mb.set(c, e = new ca(Object.assign({ templateFactory: lb }, d))), e.appendInto(c)), e.setValue(a), e.commit(); };
     typeof window !== "undefined" && (window.litHtmlVersions || (window.litHtmlVersions = [])).push("1.2.1");
-    var k = function (a) {
+    var j = function (a) {
         var c = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             c[_i - 1] = arguments[_i];
         }
-        return new ma(a, c, "html", db);
+        return new oa(a, c, "html", hb);
     };
-    var u = function (a) { return document.getElementById(a); }, q = function (a) { return parseInt(a.closest("section").id); }, U = function (a) { return parseInt(a.closest(".field").id); }, Y = function () { return Math.round(new Date().getTime() * Math.random()); }, Z = function (a) { return a.replace(/\W+|[-_]/g, "-"); };
-    function z(a, c) {
+    var u = function (a) { return document.getElementById(a); }, p = function (a) { return parseInt(a.closest("section").id); }, U = function (a) { return parseInt(a.closest(".field").id); }, _ = function () { return Math.round(new Date().getTime() * Math.random()); }, $ = function (a) { return a.replace(/\W+|[-_]/g, "-"); };
+    function B(a, c) {
         var a_2, a_2_1, d, _b, e_7_1;
         var e_7, _c;
         return __generator(this, function (_d) {
@@ -441,7 +441,7 @@ var __spread = (this && this.__spread) || function () {
                     _d.sent();
                     _b = d.children;
                     if (!_b) return [3, 4];
-                    return [5, __values(z(d.children, d))];
+                    return [5, __values(B(d.children, d))];
                 case 3:
                     _b = (_d.sent());
                     _d.label = 4;
@@ -466,11 +466,11 @@ var __spread = (this && this.__spread) || function () {
             }
         });
     }
-    function D(a) {
+    function F(a) {
         var e_8, _b;
         var c;
         try {
-            for (var _c = __values(z(b.now.children)), _d = _c.next(); !_d.done; _d = _c.next()) {
+            for (var _c = __values(B(b.now.children)), _d = _c.next(); !_d.done; _d = _c.next()) {
                 var _e = _d.value, d = _e.section, e = _e.parent;
                 if (d.id == a) {
                     c = d;
@@ -487,15 +487,15 @@ var __spread = (this && this.__spread) || function () {
         }
         return c;
     }
-    function ka(a) { var c = a.closest("section"), d = c.getAttribute("data-section-depth"); return parseInt(d); }
-    function ha(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d - 1, 0, f), t(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveUp")) === null || _b === void 0 ? void 0 : _b.focus(); }
-    function ga(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d + 1, 0, f), t(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveDown")) === null || _b === void 0 ? void 0 : _b.focus(); }
-    function L() {
+    function ma(a) { var c = a.closest("section"), d = c.getAttribute("data-section-depth"); return parseInt(d); }
+    function ia(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d - 1, 0, f), t(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveUp")) === null || _b === void 0 ? void 0 : _b.focus(); }
+    function ha(a, c, d) { var _b; var e = a[c] || [], f = e[d]; e.splice(d, 1), e.splice(d + 1, 0, f), t(), n(), b.hasChanged = !0, document.activeElement.blur(), (_b = document.querySelector("[id=\"" + f.id + "\"] .moveDown")) === null || _b === void 0 ? void 0 : _b.focus(); }
+    function N() {
         var e_9, _b;
         var _c, _d;
         b.now.fieldTypes = b.now.selected.template.fieldTypes || [], b.now.globalTypes = b.now.selected.template.globalTypes || b.now.globalTypes, b.now.selected.fieldType = ((_c = b.now.fieldTypes) === null || _c === void 0 ? void 0 : _c[0]) || {}, b.now.selected.globalType = ((_d = b.now.globalTypes) === null || _d === void 0 ? void 0 : _d[0]) || {};
         try {
-            for (var _e = __values(z(b.now.children)), _f = _e.next(); !_f.done; _f = _e.next()) {
+            for (var _e = __values(B(b.now.children)), _f = _e.next(); !_f.done; _f = _e.next()) {
                 var _g = _f.value, a = _g.section, c = _g.parent;
                 if (!a.fields.length)
                     continue;
@@ -510,68 +510,68 @@ var __spread = (this && this.__spread) || function () {
             finally { if (e_9) throw e_9.error; }
         }
     }
-    var K = (function () {
-        function K(a) {
+    var M = (function () {
+        function M(a) {
             if (a === void 0) { a = 0; }
-            this.id = Y(), this.depth = a, this.text = "", this.html = "", this.children = [], this.fields = [];
+            this.id = _(), this.depth = a, this.text = "", this.html = "", this.children = [], this.fields = [];
         }
-        return K;
+        return M;
     }());
-    var Aa = (function () {
-        function Aa() {
-            this.id = Y(), this.value = "", this.type = 0;
+    var Ea = (function () {
+        function Ea() {
+            this.id = _(), this.value = "", this.type = 0;
         }
-        return Aa;
+        return Ea;
     }());
-    var R = (function () {
-        function R(a) {
-            this.id = Y(), this.name = a, this.css = "";
+    var S = (function () {
+        function S(a) {
+            this.id = _(), this.name = a, this.css = "";
         }
-        return R;
+        return S;
     }());
-    var Ba = (function () {
-        function Ba(a) {
-            this.id = Y(), this.name = a;
+    var Fa = (function () {
+        function Fa(a) {
+            this.id = _(), this.name = a;
         }
-        return Ba;
+        return Fa;
     }());
-    var ca = (function (_super) {
-        __extends(ca, _super);
-        function ca(a) {
-            var _this = _super.call(this, a) || this;
-            _this.type = "field type", _this.css = "";
-            return _this;
-        }
-        return ca;
-    }(Ba));
     var da = (function (_super) {
         __extends(da, _super);
         function da(a) {
             var _this = _super.call(this, a) || this;
-            _this.type = "template", _this.fieldTypes = [], _this.globalTypes = [];
+            _this.type = "field type", _this.css = "";
             return _this;
         }
         return da;
-    }(Ba));
-    var r = ["Chapter", "Section", "Block"], M = { h1: "Lvl 1 Heading", h2: "Lvl 2 Heading", h3: "Lvl 3 Heading", h4: "Lvl 4 Heading", h5: "Lvl 5 Heading", h6: "Lvl 6 Heading", hr: "Horizontal Rules", p: "Paragraph", blockquote: "Block Quote", ul: "Unordered List", ol: "Ordered List", li: "List Item", a: "Link", strong: "Bolded Text", em: "Italic Text", code: "Code", img: "Image" }, w = { previewPane: u("preview"), toolbar: u("toolbar"), contentEditorPane: u("content_editor"), styleEditorPane: u("style_editor"), modal: u("modal"), customStyles: u("custom_styles"), walkThroughDialogue: u("walkthrough_dialogue"), mobileNav: u("mobile_nav") }, G = { throttle: 60, mobileBreakpoint: 960, saveInterval: 2000, zoom: { min: .5, max: 2, interval: .1 } };
-    var Ca;
+    }(Fa));
+    var ea = (function (_super) {
+        __extends(ea, _super);
+        function ea(a) {
+            var _this = _super.call(this, a) || this;
+            _this.type = "template", _this.fieldTypes = [], _this.globalTypes = [];
+            return _this;
+        }
+        return ea;
+    }(Fa));
+    var r = ["Chapter", "Section", "Block"], O = { h1: "Lvl 1 Heading", h2: "Lvl 2 Heading", h3: "Lvl 3 Heading", h4: "Lvl 4 Heading", h5: "Lvl 5 Heading", h6: "Lvl 6 Heading", hr: "Horizontal Rules", p: "Paragraph", blockquote: "Block Quote", ul: "Unordered List", ol: "Ordered List", li: "List Item", a: "Link", strong: "Bolded Text", em: "Italic Text", code: "Code", img: "Image" }, v = { previewPane: u("preview"), toolbar: u("toolbar"), contentEditorPane: u("content_editor"), styleEditorPane: u("style_editor"), modal: u("modal"), customStyles: u("custom_styles"), walkThroughDialogue: u("walkthrough_dialogue"), mobileNav: u("mobile_nav") }, H = { throttle: 60, mobileBreakpoint: 960, saveInterval: 2000, zoom: { min: .5, max: 2, interval: .1 } };
+    var Ga;
     try {
-        Ca = JSON.parse(localStorage.getItem("State"));
+        Ga = JSON.parse(localStorage.getItem("State"));
     }
     catch (a) {
         console.log("No previous data found.");
     }
-    var b = Ca || { now: { children: [], fieldTypes: [], globalTypes: r.map(function (a) { return new R(a); }).concat(Object.values(M).map(function (a) { return new R(a); })), selected: { fieldType: {}, globalType: {}, template: {} }, editing: {} }, nowIndex: 0, settings: { zoom: 1, darkMode: !1, advancedUI: !1, messagesShown: !1 }, walkthroughIndex: 0, history: [], templates: [], hasChanged: !1, isNewUser: !0, isMobile: innerWidth <= G.mobileBreakpoint, lastSaved: new Date(), forExport: "" };
-    var Ua = function (a) {
+    var b = Ga || { now: { children: [], fieldTypes: [], globalTypes: r.map(function (a) { return new S(a); }).concat(Object.values(O).map(function (a) { return new S(a); })), selected: { fieldType: {}, globalType: {}, template: {} }, editing: {} }, nowIndex: 0, settings: { zoom: 1, darkMode: !1, advancedUI: !1, messagesShown: !1 }, walkthroughIndex: 0, history: [], templates: [], hasChanged: !1, isNewUser: !0, isMobile: innerWidth <= H.mobileBreakpoint, lastSaved: new Date(), forExport: "" };
+    var Ya = function (a) {
         var e_10, _b;
         var _c;
-        var c = q(a.target), d = ka(a.target), e;
+        var c = p(a.target), d = ma(a.target), e;
         try {
-            for (var _d = __values(z(b.now.children, b.now)), _e = _d.next(); !_e.done; _e = _d.next()) {
-                var _f = _e.value, f = _f.section, h = _f.parent;
+            for (var _d = __values(B(b.now.children, b.now)), _e = _d.next(); !_e.done; _e = _d.next()) {
+                var _f = _e.value, f = _f.section, i = _f.parent;
                 if (f.id == c) {
-                    var g = new K(d);
-                    h.children.push(g), e = g.id;
+                    var h = new M(d);
+                    i.children.push(h), e = h.id;
                     break;
                 }
             }
@@ -585,16 +585,16 @@ var __spread = (this && this.__spread) || function () {
         }
         b.hasChanged = !0, t(), b.isMobile || ((_c = document.querySelector("[id=\"" + e + "\"] textarea")) === null || _c === void 0 ? void 0 : _c.focus());
     };
-    var Va = function (a) {
+    var Za = function (a) {
         var e_11, _b;
         var _c;
-        var c = q(a.target), d = ka(a.target), e;
+        var c = p(a.target), d = ma(a.target), e;
         try {
-            for (var _d = __values(z(b.now.children, b.now)), _e = _d.next(); !_e.done; _e = _d.next()) {
-                var _f = _e.value, f = _f.section, h = _f.parent;
+            for (var _d = __values(B(b.now.children, b.now)), _e = _d.next(); !_e.done; _e = _d.next()) {
+                var _f = _e.value, f = _f.section, i = _f.parent;
                 if (f.id == c) {
-                    var g = new K(d + 1);
-                    f.children.unshift(g), e = g.id;
+                    var h = new M(d + 1);
+                    f.children.unshift(h), e = h.id;
                     break;
                 }
             }
@@ -608,16 +608,16 @@ var __spread = (this && this.__spread) || function () {
         }
         b.hasChanged = !0, t(), b.isMobile || ((_c = document.querySelector("[id=\"" + e + "\"] textarea")) === null || _c === void 0 ? void 0 : _c.focus());
     };
-    var Wa = function (a) {
+    var _a = function (a) {
         var e_12, _b;
-        var c = q(a.target);
+        var c = p(a.target);
         var _loop_1 = function (d, e) {
             if (d.id != c)
                 return "continue";
             e.children = e.children.filter(function (f) { return f != d; });
         };
         try {
-            for (var _c = __values(z(b.now.children, b.now)), _d = _c.next(); !_d.done; _d = _c.next()) {
+            for (var _c = __values(B(b.now.children, b.now)), _d = _c.next(); !_d.done; _d = _c.next()) {
                 var _e = _d.value, d = _e.section, e = _e.parent;
                 _loop_1(d, e);
             }
@@ -631,42 +631,42 @@ var __spread = (this && this.__spread) || function () {
         }
         b.hasChanged = !0, n(), t();
     };
-    var Xa = function (a) { var c = q(a.target), d = D(c); d.text = a.target.value, b.hasChanged = !0, n(); };
-    var S = { addSiblingSection: Ua, addChildSection: Va, removeSection: Wa, updateSection: Xa };
-    var Ja = function (a) { var _b; var c = q(a.target), d = D(c), e = new Aa(); e.type = b.now.fieldTypes[0], d.fields.push(e), b.hasChanged = !0, t(), b.isMobile || ((_b = document.querySelector("[id=\"" + e.id + "\"] input")) === null || _b === void 0 ? void 0 : _b.focus()); };
-    var Ka = function (a) { var c = q(a.target), d = D(c), e = U(a.target); d.fields = d.fields.filter(function (f) { return f.id != e; }), b.hasChanged = !0, t(), n(); };
-    var La = function (a) { var c = q(a.target), d = D(c), e = U(a.target), f = d.fields.find(function (h) { return h.id == e; }); f.value = a.target.value, b.hasChanged = !0, n(); };
-    var Ma = function (a) { var c = a.target.value, d = U(a.target), e = q(a.target), f = D(e), h = f.fields.find(function (g) { return g.id == d; }); h.type = b.now.fieldTypes.find(function (g) { return g.id == c; }), b.hasChanged = !0, n(); };
-    var N = { addField: Ja, removeField: Ka, updateFieldValue: La, updateFieldType: Ma };
-    var Ya = function (a) { var c = a.target.textContent || ""; a.target.id.includes("global") && (b.now.selected.globalType.css = c, b.hasChanged = !0), a.target.id.includes("field") && (b.now.selected.fieldType.css = c, b.hasChanged = !0), ua(); };
+    var $a = function (a) { var c = p(a.target), d = F(c); d.text = a.target.value, b.hasChanged = !0, n(); };
+    var T = { addSiblingSection: Ya, addChildSection: Za, removeSection: _a, updateSection: $a };
+    var Na = function (a) { var _b; var c = p(a.target), d = F(c), e = new Ea(); e.type = b.now.fieldTypes[0], d.fields.push(e), b.hasChanged = !0, t(), b.isMobile || ((_b = document.querySelector("[id=\"" + e.id + "\"] input")) === null || _b === void 0 ? void 0 : _b.focus()); };
+    var Oa = function (a) { var c = p(a.target), d = F(c), e = U(a.target); d.fields = d.fields.filter(function (f) { return f.id != e; }), b.hasChanged = !0, t(), n(); };
+    var Pa = function (a) { var c = p(a.target), d = F(c), e = U(a.target), f = d.fields.find(function (i) { return i.id == e; }); f.value = a.target.value, b.hasChanged = !0, n(); };
+    var Qa = function (a) { var c = a.target.value, d = U(a.target), e = p(a.target), f = F(e), i = f.fields.find(function (h) { return h.id == d; }); i.type = b.now.fieldTypes.find(function (h) { return h.id == c; }), b.hasChanged = !0, n(); };
+    var P = { addField: Na, removeField: Oa, updateFieldValue: Pa, updateFieldType: Qa };
+    var ab = function (a) { var c = a.target.textContent || ""; a.target.id.includes("global") && (b.now.selected.globalType.css = c, b.hasChanged = !0), a.target.id.includes("field") && (b.now.selected.fieldType.css = c, b.hasChanged = !0), wa(); };
     var V = function (a) { var c = a.target || a, d = function (e, f) { return "<span class=\"token " + f + "\">" + e + "</span>"; }; c.innerHTML = c.innerText.replace(/\n/g, "").replace(/;/g, d(";", "newline")).replace(/[,:](?!\s)/g, function (e) { return e + " "; }); };
-    var Za = function (a) { var c = a.target.value, d = u("field_type_styles"), e = b.now.fieldTypes.find(function (f) { return f.id == c; }); if (e)
+    var bb = function (a) { var c = a.target.value, d = u("field_type_styles"), e = b.now.fieldTypes.find(function (f) { return f.id == c; }); if (e)
         e.css || (e.css = ""), b.now.selected.fieldType = e;
     else {
         var f = { id: c, css: "" };
         b.now.fieldTypes.push(f), b.now.selected.fieldType = f;
     } d.innerHTML = b.now.selected.fieldType.css, V(d), b.hasChanged = !0, n(); };
-    var _a = function (a) { var c = u("global_type_styles"), d = a.target.value, e = b.now.globalTypes.find(function (f) { return f.name == d; }); if (e)
+    var cb = function (a) { var c = u("global_type_styles"), d = a.target.value, e = b.now.globalTypes.find(function (f) { return f.name == d; }); if (e)
         e.css || (e.css = ""), b.now.selected.globalType = e;
     else {
         var f = { id: d, css: "" };
         b.now.globalTypes.push(f), b.now.selected.globalType = f;
     } c.innerHTML = b.now.selected.globalType.css, V(c), b.hasChanged = !0, n(); };
-    var y = { updateStyles: Ya, updateCurrentFieldType: Za, updateCurrentGlobalType: _a, formatCSS: V };
-    var Fa = function (a) { var _b, _c; if (a == "template") {
+    var A = { updateStyles: ab, updateCurrentFieldType: bb, updateCurrentGlobalType: cb, formatCSS: V };
+    var Ja = function (a) { var _b, _c; if (a == "template") {
         b.templates = b.templates.filter(function (c) { return JSON.parse(c).id != b.now.selected.template.id; });
         try {
             b.now.selected.template = JSON.parse((_b = b.templates) === null || _b === void 0 ? void 0 : _b[0]) || {};
         }
         catch (c) { }
-    } a == "field type" && (b.now.fieldTypes = b.now.fieldTypes.filter(function (c) { return c.id != b.now.selected.fieldType.id; }), b.now.selected.template.fieldTypes = b.now.fieldTypes, b.now.selected.fieldType = ((_c = b.now.fieldTypes) === null || _c === void 0 ? void 0 : _c[0]) || {}), b.now.editing = {}, b.hasChanged = !0, p(), s(null); };
-    var Ga = function (a) { var _b; b.now.editing[a.target.name] = a.target.value, ((_b = b.now.editing) === null || _b === void 0 ? void 0 : _b.type) == "template" && b.templates.map(function (c, d) { var e = JSON.parse(c), f = e.id == b.now.editing.id; f && b.templates.splice(d, 1, JSON.stringify(b.now.editing)); }), b.hasChanged = !0, p(); };
-    var Ia = function () {
+    } a == "field type" && (b.now.fieldTypes = b.now.fieldTypes.filter(function (c) { return c.id != b.now.selected.fieldType.id; }), b.now.selected.template.fieldTypes = b.now.fieldTypes, b.now.selected.fieldType = ((_c = b.now.fieldTypes) === null || _c === void 0 ? void 0 : _c[0]) || {}), b.now.editing = {}, b.hasChanged = !0, o(), s(null); };
+    var Ka = function (a) { var _b; b.now.editing[a.target.name] = a.target.value, ((_b = b.now.editing) === null || _b === void 0 ? void 0 : _b.type) == "template" && b.templates.map(function (c, d) { var e = JSON.parse(c), f = e.id == b.now.editing.id; f && b.templates.splice(d, 1, JSON.stringify(b.now.editing)); }), b.hasChanged = !0, o(); };
+    var Ma = function () {
         var e_13, _b;
         b.now.selected.fieldType = b.now.fieldTypes[b.now.fieldTypes.length - 1], b.now.selected.template.fieldTypes = b.now.fieldTypes;
         if (b.now.fieldTypes.length == 1)
             try {
-                for (var _c = __values(z(b.now.children)), _d = _c.next(); !_d.done; _d = _c.next()) {
+                for (var _c = __values(B(b.now.children)), _d = _c.next(); !_d.done; _d = _c.next()) {
                     var _e = _d.value, a = _e.section, c = _e.parent;
                     a.fields.map(function (d) { return d.type = b.now.fieldTypes[0]; });
                 }
@@ -679,17 +679,17 @@ var __spread = (this && this.__spread) || function () {
                 finally { if (e_13) throw e_13.error; }
             }
     };
-    var Ha = function (a) { var _b; b.now.editing.name = b.now.editing.name.trim(); if (!b.now.editing.name.length) {
+    var La = function (a) { var _b; b.now.editing.name = b.now.editing.name.trim(); if (!b.now.editing.name.length) {
         s(null);
         return;
-    } a == "field type" && (b.now.fieldTypes.push(new ca(b.now.editing.name)), Ia(), (_b = w.styleEditorPane.querySelector("code")) === null || _b === void 0 ? void 0 : _b.focus()); if (a == "template") {
-        var c = new da(b.now.editing.name);
+    } a == "field type" && (b.now.fieldTypes.push(new da(b.now.editing.name)), Ma(), (_b = v.styleEditorPane.querySelector("code")) === null || _b === void 0 ? void 0 : _b.focus()); if (a == "template") {
+        var c = new ea(b.now.editing.name);
         c.fieldTypes = b.now.fieldTypes, c.globalTypes = b.now.globalTypes, b.templates.push(JSON.stringify(c)), b.now.selected.template = c;
-    } b.now.editing = {}, b.hasChanged = !0, p(), s(null); };
-    var _ = { removeType: Fa, updateType: Ga, saveNewType: Ha };
-    var Na = function (a) { var c = b.settings.darkMode; document.documentElement.classList.toggle("dark_mode", !c), b.settings.darkMode = !c, b.hasChanged = !0, B(); };
-    var Oa = function (a) { var c = b.settings.advancedUI; document.documentElement.classList.toggle("advanced", !c), b.settings.advancedUI = !c, b.hasChanged = !0, B(); };
-    var ja = function (a) {
+    } b.now.editing = {}, b.hasChanged = !0, o(), s(null); };
+    var aa = { removeType: Ja, updateType: Ka, saveNewType: La };
+    var Ra = function (a) { var c = b.settings.darkMode; document.documentElement.classList.toggle("dark_mode", !c), b.settings.darkMode = !c, b.hasChanged = !0, D(); };
+    var Sa = function (a) { var c = b.settings.advancedUI; document.documentElement.classList.toggle("advanced", !c), b.settings.advancedUI = !c, b.hasChanged = !0, D(); };
+    var la = function (a) {
         var e_14, _b;
         if (!confirm("Are you sure you want to load this template?"))
             return;
@@ -698,7 +698,7 @@ var __spread = (this && this.__spread) || function () {
                 var c = _d.value;
                 var d = JSON.parse(c);
                 if (d.id == a.target.value) {
-                    b.now.selected.template = d, L(), p(), b.hasChanged = !0;
+                    b.now.selected.template = d, N(), o(), b.hasChanged = !0;
                     break;
                 }
             }
@@ -711,116 +711,114 @@ var __spread = (this && this.__spread) || function () {
             finally { if (e_14) throw e_14.error; }
         }
     };
-    var Pa = function (a) { return window.print(); };
-    var Qa = function (a) { var c = a.target.files[0], d = new FileReader(); d.onerror = function () { console.error(this.error); }, d.onload = function () { var e = JSON.parse(this.result); Object.keys(b).map(function (f) { return b[f] = e[f]; }), L(), p(); }, document.body.classList.add("importing"), d.readAsText(c); };
-    var Ra = function (a) { b.now.children = [new K()], b.now.fieldTypes = [], b.now.globalTypes = r.map(function (c) { return new R(c); }).concat(Object.values(M).map(function (c) { return new R(c); })), b.now.editing = {}, b.now.selected = { fieldType: {}, globalType: {}, template: {} }, b.templates = [], p(), b.hasChanged = !0; };
-    var Sa = function (a) { document.body.setAttribute("data-selected-pane", a); };
-    var Ta = function (a) {
+    var Ta = function (a) { return window.print(); };
+    var Ua = function (a) { var c = a.target.files[0], d = new FileReader(); d.onerror = function () { console.error(this.error); }, d.onload = function () { var e = JSON.parse(this.result); Object.keys(b).map(function (f) { return b[f] = e[f]; }), N(), o(); }, document.body.classList.add("importing"), d.readAsText(c); };
+    var Va = function (a) { b.now.children = [new M()], b.now.fieldTypes = [], b.now.globalTypes = r.map(function (c) { return new S(c); }).concat(Object.values(O).map(function (c) { return new S(c); })), b.now.editing = {}, b.now.selected = { fieldType: {}, globalType: {}, template: {} }, b.templates = [], o(), b.hasChanged = !0; };
+    var Wa = function (a) { document.body.setAttribute("data-selected-pane", a); };
+    var Xa = function (a) {
         if (a === void 0) { a = ""; }
         var c = a.toLowerCase(), d = b.settings.zoom;
-        c == "out" && d > G.zoom.min && (d = d - G.zoom.interval), c == "in" && d < G.zoom.max && (d = d + G.zoom.interval), d != b.settings.zoom && (b.settings.zoom = d, b.hasChanged = !0, B());
+        c == "out" && d > H.zoom.min && (d = d - H.zoom.interval), c == "in" && d < H.zoom.max && (d = d + H.zoom.interval), d != b.settings.zoom && (b.settings.zoom = d, b.hasChanged = !0, D());
     };
-    var C = { toggleDarkMode: Na, toggleAdvancedUI: Oa, loadTemplate: ja, printDocument: Pa, importData: Qa, clearData: Ra, switchPane: Sa, zoom: Ta };
-    var ia = function (_b) {
+    var E = { toggleDarkMode: Ra, toggleAdvancedUI: Sa, loadTemplate: la, printDocument: Ta, importData: Ua, clearData: Va, switchPane: Wa, zoom: Xa };
+    var ja = function (_b) {
         var _c = _b === void 0 ? {} : _b, _d = _c.global, a = _d === void 0 ? !1 : _d, _e = _c.field, c = _e === void 0 ? {} : _e;
         var _f, _g, _h, _j;
         if (!((_f = b.now.fieldTypes) === null || _f === void 0 ? void 0 : _f.length))
             return;
         var d = a ? (_g = b.now.selected.fieldType) === null || _g === void 0 ? void 0 : _g.id : (_j = (_h = c) === null || _h === void 0 ? void 0 : _h.type) === null || _j === void 0 ? void 0 : _j.id;
-        return k(__makeTemplateObject(["\n    <select name=type @input=", ">\n\n        ", "\n\n    </select>"], ["\n    <select name=type @input=", ">\n\n        ",
-            "\n\n    </select>"]), a ? y.updateCurrentFieldType : N.updateFieldType, b.now.fieldTypes.map(function (e) { return k(__makeTemplateObject(["\n            <option value=", " ?selected=", ">\n                ", "\n            </option>\n        "], ["\n            <option value=", " ?selected=", ">\n                ", "\n            </option>\n        "]), e.id, e.id == d, e.name); }));
+        return j(__makeTemplateObject(["\n    <select name=type @input=", ">\n\n        ", "\n\n    </select>"], ["\n    <select name=type @input=", ">\n\n        ",
+            "\n\n    </select>"]), a ? A.updateCurrentFieldType : P.updateFieldType, b.now.fieldTypes.map(function (e) { return j(__makeTemplateObject(["\n            <option value=", " ?selected=", ">\n                ", "\n            </option>\n        "], ["\n            <option value=", " ?selected=", ">\n                ", "\n            </option>\n        "]), e.id, e.id == d, e.name); }));
     };
-    var Da = function (a, c, d) { return k(__makeTemplateObject(["\n<div \nclass=field \nid=", ">\n\n    <input \n    placeholder=\"Field value...\"\n    type=text \n    .value=", " \n    @input=", " />\n\n    ", "\n\n    <button \n    @click=", " \n    class=remove>\n        Remove\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", "\n    class=\"move moveDown\">\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", " \n    class=\"move moveUp\">\n    </button>\n\n</div>"], ["\n<div \nclass=field \nid=", ">\n\n    <input \n    placeholder=\"Field value...\"\n    type=text \n    .value=", " \n    @input=", " />\n\n    ", "\n\n    <button \n    @click=", " \n    class=remove>\n        Remove\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", "\n    class=\"move moveDown\">\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", " \n    class=\"move moveUp\">\n    </button>\n\n</div>"]), a.id, a.value, N.updateFieldValue, ia({ field: a }), N.removeField, ga.bind(void 0, c, "fields", d), d >= c.fields.length - 1, ha.bind(void 0, c, "fields", d), !d); };
-    function ea(a, c, d) {
-        var e = b.now.children.length, f = a.depth, h = f == r.length - 1;
-        return k(__makeTemplateObject(["\n    <section \n    id=", " \n    data-section-depth=", ">\n\n        <div class=fields>\n            ", "\n        </div>\n\n        <textarea \n        id=\"", "-text\"\n        placeholder=", " \n        @input=", " \n        .value=", ">\n        </textarea>\n\n        <div class=actions>\n\n            <button \n            data-icon=add_another\n            title=", "\n            @click=", ">\n            </button>\n\n            ", "\n\n            <button \n            class=add\n            data-icon\n            title=\"Add Field\"\n            @click=", ">\n            </button>\n\n            ", "\n\n            ", "\n\n        </div>\n\n        ", "\n\n    </section>"], ["\n    <section \n    id=", " \n    data-section-depth=", ">\n\n        <div class=fields>\n            ", "\n        </div>\n\n        <textarea \n        id=\"", "-text\"\n        placeholder=", " \n        @input=", " \n        .value=", ">\n        </textarea>\n\n        <div class=actions>\n\n            <button \n            data-icon=add_another\n            title=", "\n            @click=", ">\n            </button>\n\n            ",
+    var Ha = function (a, c, d) { return j(__makeTemplateObject(["\n<div \nclass=field \nid=", ">\n\n    <input \n    placeholder=\"Field value...\"\n    type=text \n    .value=", " \n    @input=", " />\n\n    ", "\n\n    <button \n    @click=", " \n    class=remove>\n        Remove\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", "\n    class=\"move moveDown\">\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", " \n    class=\"move moveUp\">\n    </button>\n\n</div>"], ["\n<div \nclass=field \nid=", ">\n\n    <input \n    placeholder=\"Field value...\"\n    type=text \n    .value=", " \n    @input=", " />\n\n    ", "\n\n    <button \n    @click=", " \n    class=remove>\n        Remove\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", "\n    class=\"move moveDown\">\n    </button>\n\n    <button\n    data-icon\n    @click=", "\n    ?disabled=", " \n    class=\"move moveUp\">\n    </button>\n\n</div>"]), a.id, a.value, P.updateFieldValue, ja({ field: a }), P.removeField, ha.bind(void 0, c, "fields", d), d >= c.fields.length - 1, ia.bind(void 0, c, "fields", d), !d); };
+    function fa(a, c, d) {
+        var e = b.now.children.length, f = a.depth, i = f == r.length - 1;
+        return j(__makeTemplateObject(["\n    <section \n    id=", " \n    data-section-depth=", ">\n\n        <div class=fields>\n            ", "\n        </div>\n\n        <textarea \n        id=\"", "-text\"\n        placeholder=", " \n        @input=", " \n        .value=", ">\n        </textarea>\n\n        <div class=actions>\n\n            <button \n            data-icon=add_another\n            title=", "\n            @click=", ">\n            </button>\n\n            ", "\n\n            <button \n            class=add\n            data-icon\n            title=\"Add Field\"\n            @click=", ">\n            </button>\n\n            ", "\n\n            ", "\n\n        </div>\n\n        ", "\n\n    </section>"], ["\n    <section \n    id=", " \n    data-section-depth=", ">\n\n        <div class=fields>\n            ", "\n        </div>\n\n        <textarea \n        id=\"", "-text\"\n        placeholder=", " \n        @input=", " \n        .value=", ">\n        </textarea>\n\n        <div class=actions>\n\n            <button \n            data-icon=add_another\n            title=", "\n            @click=", ">\n            </button>\n\n            ",
             "\n\n            <button \n            class=add\n            data-icon\n            title=\"Add Field\"\n            @click=", ">\n            </button>\n\n            ",
             "\n\n            ",
-            "\n\n        </div>\n\n        ", "\n\n    </section>"]), a.id, a.depth, a.fields.map(function (g, l) { return Da(g, a, l); }), a.id, "Write something for this " + r[f].toLowerCase() + "...", S.updateSection, a.text, "Add " + r[f], S.addSiblingSection, h ? "" : k(__makeTemplateObject(["\n            <button \n            data-icon=add_sub\n            title=", "\n            @click=", ">\n            </button>"], ["\n            <button \n            data-icon=add_sub\n            title=", "\n            @click=", ">\n            </button>"]), "Add " + r[f + 1], S.addChildSection), N.addField, e > 1 || f ? k(__makeTemplateObject(["\n            <button \n            class=remove\n            @click=", ">\n            Remove\n            </button>"], ["\n            <button \n            class=remove\n            @click=", ">\n            Remove\n            </button>"]), S.removeSection) : "", c.children.length > 1 ? k(__makeTemplateObject(["\n\n            <button \n            class=\"move moveDown\" \n            data-icon\n            title=\"Move Down\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n\n            <button \n            class=\"move moveUp\"\n            data-icon\n            title=\"Move Up\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n            \n            "], ["\n\n            <button \n            class=\"move moveDown\" \n            data-icon\n            title=\"Move Down\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n\n            <button \n            class=\"move moveUp\"\n            data-icon\n            title=\"Move Up\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n            \n            "]), d >= c.children.length - 1, ga.bind(this, c, "children", d), !d, ha.bind(this, c, "children", d)) : "", a.children.length ? a.children.map(function (g, l) { return ea(g, a, l); }) : "");
+            "\n\n        </div>\n\n        ", "\n\n    </section>"]), a.id, a.depth, a.fields.map(function (h, l) { return Ha(h, a, l); }), a.id, "Write something for this " + r[f].toLowerCase() + "...", T.updateSection, a.text, "Add " + r[f], T.addSiblingSection, i ? "" : j(__makeTemplateObject(["\n            <button \n            data-icon=add_sub\n            title=", "\n            @click=", ">\n            </button>"], ["\n            <button \n            data-icon=add_sub\n            title=", "\n            @click=", ">\n            </button>"]), "Add " + r[f + 1], T.addChildSection), P.addField, e > 1 || f ? j(__makeTemplateObject(["\n            <button \n            class=remove\n            @click=", ">\n            Remove\n            </button>"], ["\n            <button \n            class=remove\n            @click=", ">\n            Remove\n            </button>"]), T.removeSection) : "", c.children.length > 1 ? j(__makeTemplateObject(["\n\n            <button \n            class=\"move moveDown\" \n            data-icon\n            title=\"Move Down\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n\n            <button \n            class=\"move moveUp\"\n            data-icon\n            title=\"Move Up\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n            \n            "], ["\n\n            <button \n            class=\"move moveDown\" \n            data-icon\n            title=\"Move Down\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n\n            <button \n            class=\"move moveUp\"\n            data-icon\n            title=\"Move Up\"\n            ?disabled=", " \n            @click=", ">\n            </button>\n            \n            "]), d >= c.children.length - 1, ha.bind(this, c, "children", d), !d, ia.bind(this, c, "children", d)) : "", a.children.length ? a.children.map(function (h, l) { return fa(h, a, l); }) : "");
     }
-    var vb = { "": ["<em>", "</em>"], _: ["<strong>", "</strong>"], "*": ["<strong>", "</strong>"], "~": ["<s>", "</s>"], "\n": ["<br />"], " ": ["<br />"], "-": ["<hr />"] };
-    function ob(a) { return a.replace(RegExp("^" + (a.match(/^(\t| )+/) || "")[0], "gm"), ""); }
-    function ba(a) { return (a + "").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
-    function T(a, c) { var d = /((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:!\[([^\]]*?)\]\(([^)]+?)\))|(\[)|(\](?:\(([^)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm, e = [], f = "", h = c || {}, g = 0, l, I, i, j, m; function P(o) { var v = vb[o[1] || ""], A = e[e.length - 1] == o; return v ? v[1] ? (A ? e.pop() : e.push(o), v[A | 0]) : v[0] : o; } function F() { var o = ""; for (; e.length;)
-        o += P(e[e.length - 1]); return o; } for (a = a.replace(/^\[(.+?)\]:\s*(.+)$/gm, function (o, v, A) { return (h[v.toLowerCase()] = A, ""); }).replace(/^\n+|\n+$/g, ""); i = d.exec(a);)
-        I = a.substring(g, i.index), g = d.lastIndex, l = i[0], I.match(/[^\\](\\\\)*\\$/) || ((m = i[3] || i[4]) ? l = '<pre class="code ' + (i[4] ? "poetry" : i[2].toLowerCase()) + '"><code' + (i[2] ? " class=\"language-" + i[2].toLowerCase() + "\"" : "") + ">" + ob(ba(m).replace(/^\n+|\n+$/g, "")) + "</code></pre>" : (m = i[6]) ? (m.match(/\./) && (i[5] = i[5].replace(/^\d+/gm, "")), j = T(ob(i[5].replace(/^\s*[>*+.-]/gm, ""))), m == ">" ? m = "blockquote" : (m = m.match(/\./) ? "ol" : "ul", j = j.replace(/^(.*)(\n|$)/gm, "<li>$1</li>")), l = "<" + m + ">" + j + "</" + m + ">") : i[8] ? l = "<img src=\"" + ba(i[8]) + "\" alt=\"" + ba(i[7]) + "\">" : i[10] ? (f = f.replace("<a>", "<a href=\"" + ba(i[11] || h[I.toLowerCase()]) + "\">"), l = F() + "</a>") : i[9] ? l = "<a>" : i[12] || i[14] ? (m = "h" + (i[14] ? i[14].length : i[13] > "=" ? 1 : 2), l = "<" + m + ">" + T(i[12] || i[15], h) + "</" + m + ">") : i[16] ? l = "<code>" + ba(i[16]) + "</code>" : (i[17] || i[1]) && (l = P(i[17] || "--"))), f += I, f += l; return (f + a.substring(g) + F()).replace(/^\n+|\n+$/g, ""); }
-    var Ea = function (a) {
+    var ka = function (a) {
+        var c = { "!": "33", "#": "35", "&": "38;", "(": "40", ")": "41", "*": "42", "+": "43", "-": "45", ".": "46", "<": "60;", ">": "62;", "[": "91", "\\": "92", "]": "93", _: "95", "`": "96", "{": "123", "}": "125", "~": "126" }, d = /(^|\s)(> )+(.|\n)+?(?=$|\n(?!>))/g, e = "[0-9]+\\. ", f = "[-+*] ", i = function (g) { return "&#" + (c[g] || g); }, h = function (g) { return g.replace(/[&<>]/g, i); }, l = function (g) { return g.trim().slice(1, -1); }, q = function (g, m) { return "<" + g + ">" + m + "</" + g + ">"; }, Ca = function (g) { var m = new RegExp("[^|\\n]" + e).test(g), z = new RegExp("(^|\\n)" + (m ? e : f)), Z = g.split(z).filter(function (Da) { return Da.trim().length; }); return q(m ? "ol" : "ul", Z.map(function (Da) { return q("li", Da); }).join("")); }, k = function (g) { g = g.trim(); var m = g.indexOf(" "); return q("h" + m, g.slice(m).replace(/#+$/, "").trim()); }, x = function (g) { var m = g.trim().split(/\n/); return q("h" + (m[1].indexOf("-") > -1 ? 2 : 1), m[0]); }, Y = function (g) { var m = g.slice(1, -1).split("]("), z = m[1].split(/ ["`']/)[1]; return "<a href=\"" + m[1] + "\" " + (z ? "title=\"" + z + "\"" : "") + ">" + m[0] + "</a>"; }, J = function (g) { var m = g.split(/["`']/), z = m[0].trim().replace(/^<|>$/g, ""), Z = m[1]; return " <a href=\"" + z + "\" " + (Z ? "title=\"" + Z + "\"" : "") + ">" + z + "</a>"; }, y = function (g) { var m = g.slice(2, -1).split("]("), z = m[1].split(/ ["`']/)[1]; return "<img src=\"" + m[1] + "\" " + (z ? "title=\"" + z + "\"" : "") + " alt=\"" + m[0] + "\">"; }, Q = function (g) { var _b = __read(g.trim().split(/\n+/)), m = _b[0], z = _b.slice(1), Z = h(z.slice(0, -1).join("\r")).trim(); return q("pre", "<code class=\"language-" + m.slice(3) + "\">" + Z + "</code>"); }, K = function (g) { return (g = q("blockquote", g.replace(/^ *?> /gm, "")), g.replace(d, K)); }, L = function (g) { return " <a href=\"" + g + "\">" + g.trim() + "</a>"; }, C = function (g) { return q("p", g.trim()); }, yb = function (g) { return q("strong", g.slice(2, -2)); }, zb = function (g) { return q("em", l(g)); }, Ab = function (g) { return q("del", l(g)); }, Bb = function (g) { return q("code", h(l(g))); };
+        return a.replace(/\r+/g, "\n").replace(/\\[-*_\\`#~+.!(){}[\]]/g, function (g) { return i(g.slice(1)); }).replace(/(^|\n).+?\n[-=]+(?=$|\n)/g, x).replace(/(^|\n)#+? (.|\n)+?(?=$|\n)/g, k).replace(/(^|\n)([-*_] ?){3,}(?=$|\n)/g, "<hr>").replace(/(^|\n)([0-9]+\.|[-+*]) (.|\n)+?(?=$|[\s\n]{3,})/g, Ca).replace(d, K).replace(/(^|\n)```(.|\n)+?```(?=$|\n)/g, Q).replace(/  (\n|$)/g, "<br>").replace(/!\[.+?\]\(.+?\)/g, y).replace(/\[.+?\]\(.+?\)/g, Y).replace(/<(https?:\/\/|www).+?>( (".+?")|('.+?'))?(?=$|\n| )/g, J).replace(/(^|\n| )(https?:\/\/|www)(.+?)+?(?=$|\n| )/g, L).replace(/\s[*_](?=\s)/g, function (g) { return g.slice(0, 1) + i(g.slice(1)); }).replace(/[*_]{2}.+?[*_]{2}/gm, yb).replace(/[*_].+?[*_]/gm, zb).replace(/~.+?~/gm, Ab).replace(/`.+?`/gm, Bb).replace(/(^|\n\n+)(?!<[huol]).+?(?=$|\n\n+)/gi, C);
+    };
+    var Ia = function (a) {
         var _b;
         var c = b.now.fieldTypes.find(function (e) { var _b, _c; return e.id == ((_c = (_b = a) === null || _b === void 0 ? void 0 : _b.type) === null || _c === void 0 ? void 0 : _c.id); }), d = document.createElement("div");
-        return d.innerHTML = T(a.value), /<p>/.test(d.innerHTML) && (d.innerHTML = d.firstElementChild.innerHTML), k(__makeTemplateObject(["\n    <div class=", ">\n        ", "\n    </div>"], ["\n    <div class=", ">\n        ", "\n    </div>"]), Z(((_b = c) === null || _b === void 0 ? void 0 : _b.name) || ""), d);
+        return d.innerHTML = ka(a.value), /<p>/.test(d.innerHTML) && (d.innerHTML = d.firstElementChild.innerHTML), j(__makeTemplateObject(["\n    <div class=", ">\n        ", "\n    </div>"], ["\n    <div class=", ">\n        ", "\n    </div>"]), $(((_b = c) === null || _b === void 0 ? void 0 : _b.name) || ""), d);
     };
-    function fa(a) {
+    function ga(a) {
         var c = document.createElement("div");
-        return c.classList.add("content"), c.innerHTML = T(a.text), k(__makeTemplateObject(["\n    <section class=", ">\n    \n        ", "\n    \n        ", "\n    \n        ", "\n    \n    </section>"], ["\n    <section class=", ">\n    \n        ", "\n    \n        ", "\n    \n        ", "\n    \n    </section>"]), r[a.depth], a.fields.map(function (d) { return Ea(d); }), a.text.length ? c : "", a.children.map(function (d) { return fa(d); }));
+        return c.classList.add("content"), c.innerHTML = ka(a.text), j(__makeTemplateObject(["\n    <section class=", ">\n    \n        ", "\n    \n        ", "\n    \n        ", "\n    \n    </section>"], ["\n    <section class=", ">\n    \n        ", "\n    \n        ", "\n    \n        ", "\n    \n    </section>"]), r[a.depth], a.fields.map(function (d) { return Ia(d); }), a.text.length ? c : "", a.children.map(function (d) { return ga(d); }));
     }
-    var qa = function () {
+    var sa = function () {
         var _b;
-        return k(__makeTemplateObject(["\n\n<div class=\"heading\">\n    Style Editor\n    <span tabindex=\"0\" data-tooltip=\"This pane is for editing your document's styles. Apply valid CSS rules to any custom field type or global element.\"></span>\n</div>\n\n<section id=manageFieldTypes>\n\n    <div class=actions>\n\n        <label>Field Styles</label>\n\n        ", "\n\n        ", "\n\n        <button \n        class=add \n        data-icon\n        title=\"New Field Type\"\n        @click=", ">\n        </button>\n        \n    </div>\n\n    <code \n    spellcheck=false\n    id=field_type_styles\n    class=language-css \n    contenteditable=true \n    @focusout=", "\n    @keyup=", "></code>\n    \n</section>\n\n\n<section id=manageGlobalTypes>\n\n    <div class=actions>\n\n        <label>Global Styles</label>\n\n        <select id=global-style-select @input=", ">\n\n            <optgroup label=Layout>\n            ", "\n            </optgroup>\n\n            <optgroup label=Elements>\n                ", "\n            </optgroup>\n        </select>\n\n    </div>\n\n    <code\n    spellcheck=false\n    id=global_type_styles\n    class=language-css\n    contenteditable=true\n    @focusout=", "\n    @keyup=", "></code>\n\n</section>\n"], ["\n\n<div class=\"heading\">\n    Style Editor\n    <span tabindex=\"0\" data-tooltip=\"This pane is for editing your document's styles. Apply valid CSS rules to any custom field type or global element.\"></span>\n</div>\n\n<section id=manageFieldTypes>\n\n    <div class=actions>\n\n        <label>Field Styles</label>\n\n        ", "\n\n        ",
+        return j(__makeTemplateObject(["\n\n<div class=\"heading\">\n    Style Editor\n    <span tabindex=\"0\" data-tooltip=\"This pane is for editing your document's styles. Apply valid CSS rules to any custom field type or global element.\"></span>\n</div>\n\n<section id=manageFieldTypes>\n\n    <div class=actions>\n\n        <label>Field Styles</label>\n\n        ", "\n\n        ", "\n\n        <button \n        class=add \n        data-icon\n        title=\"New Field Type\"\n        @click=", ">\n        </button>\n        \n    </div>\n\n    <code \n    spellcheck=false\n    id=field_type_styles\n    class=language-css \n    contenteditable=true \n    @focusout=", "\n    @keyup=", "></code>\n    \n</section>\n\n\n<section id=manageGlobalTypes>\n\n    <div class=actions>\n\n        <label>Global Styles</label>\n\n        <select id=global-style-select @input=", ">\n\n            <optgroup label=Layout>\n            ", "\n            </optgroup>\n\n            <optgroup label=Elements>\n                ", "\n            </optgroup>\n        </select>\n\n    </div>\n\n    <code\n    spellcheck=false\n    id=global_type_styles\n    class=language-css\n    contenteditable=true\n    @focusout=", "\n    @keyup=", "></code>\n\n</section>\n"], ["\n\n<div class=\"heading\">\n    Style Editor\n    <span tabindex=\"0\" data-tooltip=\"This pane is for editing your document's styles. Apply valid CSS rules to any custom field type or global element.\"></span>\n</div>\n\n<section id=manageFieldTypes>\n\n    <div class=actions>\n\n        <label>Field Styles</label>\n\n        ", "\n\n        ",
             "\n\n        <button \n        class=add \n        data-icon\n        title=\"New Field Type\"\n        @click=", ">\n        </button>\n        \n    </div>\n\n    <code \n    spellcheck=false\n    id=field_type_styles\n    class=language-css \n    contenteditable=true \n    @focusout=", "\n    @keyup=", "></code>\n    \n</section>\n\n\n<section id=manageGlobalTypes>\n\n    <div class=actions>\n\n        <label>Global Styles</label>\n\n        <select id=global-style-select @input=", ">\n\n            <optgroup label=Layout>\n            ",
             "\n            </optgroup>\n\n            <optgroup label=Elements>\n                ",
-            "\n            </optgroup>\n        </select>\n\n    </div>\n\n    <code\n    spellcheck=false\n    id=global_type_styles\n    class=language-css\n    contenteditable=true\n    @focusout=", "\n    @keyup=", "></code>\n\n</section>\n"]), ia({ global: !0 }), ((_b = b.now.fieldTypes) === null || _b === void 0 ? void 0 : _b.length) ? k(__makeTemplateObject(["\n        <button \n        data-icon\n        title=\"Edit Field Type\"\n        @click=", ">\n        </button>"], ["\n        <button \n        data-icon\n        title=\"Edit Field Type\"\n        @click=", ">\n        </button>"]), s.bind(void 0, "field type", !0)) : "", s.bind(void 0, "field type", !1), y.formatCSS, y.updateStyles, y.updateCurrentGlobalType, r.map(function (a) {
+            "\n            </optgroup>\n        </select>\n\n    </div>\n\n    <code\n    spellcheck=false\n    id=global_type_styles\n    class=language-css\n    contenteditable=true\n    @focusout=", "\n    @keyup=", "></code>\n\n</section>\n"]), ja({ global: !0 }), ((_b = b.now.fieldTypes) === null || _b === void 0 ? void 0 : _b.length) ? j(__makeTemplateObject(["\n        <button \n        data-icon\n        title=\"Edit Field Type\"\n        @click=", ">\n        </button>"], ["\n        <button \n        data-icon\n        title=\"Edit Field Type\"\n        @click=", ">\n        </button>"]), s.bind(void 0, "field type", !0)) : "", s.bind(void 0, "field type", !1), A.formatCSS, A.updateStyles, A.updateCurrentGlobalType, r.map(function (a) {
             var _b;
-            return k(__makeTemplateObject(["\n                <option\n                value=", "\n                ?selected=", ">\n                    ", "s\n                </option>\n            "], ["\n                <option\n                value=", "\n                ?selected=", ">\n                    ", "s\n                </option>\n            "]), a, a == ((_b = b.now.selected.globalType) === null || _b === void 0 ? void 0 : _b.name), a);
-        }), Object.values(M).map(function (a) {
+            return j(__makeTemplateObject(["\n                <option\n                value=", "\n                ?selected=", ">\n                    ", "s\n                </option>\n            "], ["\n                <option\n                value=", "\n                ?selected=", ">\n                    ", "s\n                </option>\n            "]), a, a == ((_b = b.now.selected.globalType) === null || _b === void 0 ? void 0 : _b.name), a);
+        }), Object.values(O).map(function (a) {
             var _b;
-            return k(__makeTemplateObject(["\n                    <option \n                    label=", "\n                    value=", "\n                    ?selected=", ">\n                        ", "s\n                    </option>\n                "], ["\n                    <option \n                    label=", "\n                    value=", "\n                    ?selected=", ">\n                        ", "s\n                    </option>\n                "]), a, a, a == ((_b = b.now.selected.globalType) === null || _b === void 0 ? void 0 : _b.name), a);
-        }), y.formatCSS, y.updateStyles);
+            return j(__makeTemplateObject(["\n                    <option \n                    label=", "\n                    value=", "\n                    ?selected=", ">\n                        ", "s\n                    </option>\n                "], ["\n                    <option \n                    label=", "\n                    value=", "\n                    ?selected=", ">\n                        ", "s\n                    </option>\n                "]), a, a, a == ((_b = b.now.selected.globalType) === null || _b === void 0 ? void 0 : _b.name), a);
+        }), A.formatCSS, A.updateStyles);
     };
-    var ra = function () { return k(__makeTemplateObject(["\n\n", "\n\n", "\n\n", "\n"], ["\n\n", "\n\n", "\n\n", "\n"]), b.now.fieldTypes.map(function (a) { return "#preview ." + Z(a.name).trim() + "{" + a.css + "}"; }), r.map(function (a) { var _b; var c = b.now.globalTypes.find(function (d) { return d.name == a; }); return "#preview ." + Z(a).trim() + "{" + ((_b = c) === null || _b === void 0 ? void 0 : _b.css) + "}"; }), Object.keys(M).map(function (a) { var _b; var c = M[a], d = b.now.globalTypes.find(function (e) { return e.name == c; }); return "#preview " + a + " {" + ((_b = d) === null || _b === void 0 ? void 0 : _b.css) + "}"; })); };
-    var oa = function (a) {
+    var ta = function () { return j(__makeTemplateObject(["\n\n", "\n\n", "\n\n", "\n"], ["\n\n", "\n\n", "\n\n", "\n"]), b.now.fieldTypes.map(function (a) { return "#preview ." + $(a.name).trim() + "{" + a.css + "}"; }), r.map(function (a) { var _b; var c = b.now.globalTypes.find(function (d) { return d.name == a; }); return "#preview ." + $(a).trim() + "{" + ((_b = c) === null || _b === void 0 ? void 0 : _b.css) + "}"; }), Object.keys(O).map(function (a) { var _b; var c = O[a], d = b.now.globalTypes.find(function (e) { return e.name == c; }); return "#preview " + a + " {" + ((_b = d) === null || _b === void 0 ? void 0 : _b.css) + "}"; })); };
+    var qa = function (a) {
         if (a === void 0) { a = 0; }
         var c = b.nowIndex + a;
-        b.now = JSON.parse(b.history[c]), b.nowIndex = c, L(), p();
+        b.now = JSON.parse(b.history[c]), b.nowIndex = c, N(), o();
     };
-    var sa = function () {
+    var ua = function () {
         var _b, _c;
         var a = b.settings;
-        return k(__makeTemplateObject(["\n    <!-- Undo/Redo -->\n    <div class=configuration id=undo_redo>\n        <button data-icon title=Undo ?disabled=", " @click=", ">\n        </button>\n        <button data-icon title=Redo ?disabled=", "\n            @click=", ">\n        </button>\n    </div>\n    \n    <!-- Zoom -->\n    <div class=configuration id=zoom>\n        <button data-icon title=\"Zoom Out\" @click=", ">\n        </button>\n        <button data-icon title=\"Zoom In\" @click=", ">\n        </button>\n        <label>", "</label>\n    </div>\n    \n    <!-- Toggle Dark Mode -->\n    <div class=configuration>\n        <button data-icon title=", "\n            ?aria-pressed=", " @click=", " id=dark_mode_toggle>\n        </button>\n    </div>\n    \n    <!-- Toggle Advanced UI -->\n    <div class=configuration id=advancedUI_toggle>\n        <button data-icon id=\"advanced_toggle\" ?aria-pressed=", " title=", " @click=", ">\n        </button>\n    </div>\n    \n    <!-- Template Management -->\n    <div class=configuration id=manageTemplates>\n        <!-- Select Template -->\n        ", "\n    \n        <!-- Save New Template -->\n        <button data-icon title=\"New Template\" @click=", "></button>\n    </div>\n    \n    <!-- Print Document -->\n    <div class=configuration id=printDocument>\n        <button data-icon title=Print @click=", ">\n        </button>\n    </div>\n    \n    <!-- Import and Export Data -->\n    <div class=configuration id=import_export>\n        <input aria-hidden=\"true\" id=importData type=file accept=.json @input=", ">\n        <label data-icon title=\"Import Data\" class=\"fileInput secondary\" for=importData>\n        </label>\n        <a class=\"button primary\" data-icon title=\"Export Data\" id=exportData .href=", " download=", ">\n        </a>\n        <!-- Clear Data -->\n        <button data-icon title=\"Clear Data\" class=destructive @click=", ">\n        </button>\n    </div>\n    \n    <!-- Last Saved -->\n    <div class=configuration id=savedIndicator>\n        Saved: ", "\n    </div>"], ["\n    <!-- Undo/Redo -->\n    <div class=configuration id=undo_redo>\n        <button data-icon title=Undo ?disabled=", " @click=", ">\n        </button>\n        <button data-icon title=Redo ?disabled=", "\n            @click=", ">\n        </button>\n    </div>\n    \n    <!-- Zoom -->\n    <div class=configuration id=zoom>\n        <button data-icon title=\"Zoom Out\" @click=", ">\n        </button>\n        <button data-icon title=\"Zoom In\" @click=", ">\n        </button>\n        <label>", "</label>\n    </div>\n    \n    <!-- Toggle Dark Mode -->\n    <div class=configuration>\n        <button data-icon title=", "\n            ?aria-pressed=", " @click=", " id=dark_mode_toggle>\n        </button>\n    </div>\n    \n    <!-- Toggle Advanced UI -->\n    <div class=configuration id=advancedUI_toggle>\n        <button data-icon id=\"advanced_toggle\" ?aria-pressed=", " title=", " @click=", ">\n        </button>\n    </div>\n    \n    <!-- Template Management -->\n    <div class=configuration id=manageTemplates>\n        <!-- Select Template -->\n        ",
+        return j(__makeTemplateObject(["\n    <!-- Undo/Redo -->\n    <div class=configuration id=undo_redo>\n        <button data-icon title=Undo ?disabled=", " @click=", ">\n        </button>\n        <button data-icon title=Redo ?disabled=", "\n            @click=", ">\n        </button>\n    </div>\n    \n    <!-- Zoom -->\n    <div class=configuration id=zoom>\n        <button data-icon title=\"Zoom Out\" @click=", ">\n        </button>\n        <button data-icon title=\"Zoom In\" @click=", ">\n        </button>\n        <label>", "</label>\n    </div>\n    \n    <!-- Toggle Dark Mode -->\n    <div class=configuration>\n        <button data-icon title=", "\n            ?aria-pressed=", " @click=", " id=dark_mode_toggle>\n        </button>\n    </div>\n    \n    <!-- Toggle Advanced UI -->\n    <div class=configuration id=advancedUI_toggle>\n        <button data-icon id=\"advanced_toggle\" ?aria-pressed=", " title=", " @click=", ">\n        </button>\n    </div>\n    \n    <!-- Template Management -->\n    <div class=configuration id=manageTemplates>\n        <!-- Select Template -->\n        ", "\n    \n        <!-- Save New Template -->\n        <button data-icon title=\"New Template\" @click=", "></button>\n    </div>\n    \n    <!-- Print Document -->\n    <div class=configuration id=printDocument>\n        <button data-icon title=Print @click=", ">\n        </button>\n    </div>\n    \n    <!-- Import and Export Data -->\n    <div class=configuration id=import_export>\n        <input aria-hidden=\"true\" id=importData type=file accept=.json @input=", ">\n        <label data-icon title=\"Import Data\" class=\"fileInput secondary\" for=importData>\n        </label>\n        <a class=\"button primary\" data-icon title=\"Export Data\" id=exportData .href=", " download=", ">\n        </a>\n        <!-- Clear Data -->\n        <button data-icon title=\"Clear Data\" class=destructive @click=", ">\n        </button>\n    </div>\n    \n    <!-- Last Saved -->\n    <div class=configuration id=savedIndicator>\n        Saved: ", "\n    </div>"], ["\n    <!-- Undo/Redo -->\n    <div class=configuration id=undo_redo>\n        <button data-icon title=Undo ?disabled=", " @click=", ">\n        </button>\n        <button data-icon title=Redo ?disabled=", "\n            @click=", ">\n        </button>\n    </div>\n    \n    <!-- Zoom -->\n    <div class=configuration id=zoom>\n        <button data-icon title=\"Zoom Out\" @click=", ">\n        </button>\n        <button data-icon title=\"Zoom In\" @click=", ">\n        </button>\n        <label>", "</label>\n    </div>\n    \n    <!-- Toggle Dark Mode -->\n    <div class=configuration>\n        <button data-icon title=", "\n            ?aria-pressed=", " @click=", " id=dark_mode_toggle>\n        </button>\n    </div>\n    \n    <!-- Toggle Advanced UI -->\n    <div class=configuration id=advancedUI_toggle>\n        <button data-icon id=\"advanced_toggle\" ?aria-pressed=", " title=", " @click=", ">\n        </button>\n    </div>\n    \n    <!-- Template Management -->\n    <div class=configuration id=manageTemplates>\n        <!-- Select Template -->\n        ",
             "\n    \n        <!-- Save New Template -->\n        <button data-icon title=\"New Template\" @click=", "></button>\n    </div>\n    \n    <!-- Print Document -->\n    <div class=configuration id=printDocument>\n        <button data-icon title=Print @click=", ">\n        </button>\n    </div>\n    \n    <!-- Import and Export Data -->\n    <div class=configuration id=import_export>\n        <input aria-hidden=\"true\" id=importData type=file accept=.json @input=", ">\n        <label data-icon title=\"Import Data\" class=\"fileInput secondary\" for=importData>\n        </label>\n        <a class=\"button primary\" data-icon title=\"Export Data\" id=exportData .href=", " download=",
-            ">\n        </a>\n        <!-- Clear Data -->\n        <button data-icon title=\"Clear Data\" class=destructive @click=", ">\n        </button>\n    </div>\n    \n    <!-- Last Saved -->\n    <div class=configuration id=savedIndicator>\n        Saved: ", "\n    </div>"]), b.nowIndex == 0, oa.bind(void 0, -1), b.nowIndex >= b.history.length - 1, oa.bind(void 0, 1), C.zoom.bind(void 0, "out"), C.zoom.bind(void 0, "in"), "(" + Math.round(a.zoom * 100) + "%)", "You're in " + (a.darkMode ? "Dark" : "Light") + " Mode", a.darkMode, C.toggleDarkMode, a.advancedUI, (a.advancedUI ? "Disable" : "Enable") + " Advanced UI", C.toggleAdvancedUI, b.templates.length ? k(__makeTemplateObject(["<select title=", " @input=", ">\n                ", "\n            </select>\n            <button data-icon title=\" Edit Template\" @click=", "></button>"], ["<select title=", " @input=", ">\n                ", "\n            </select>\n            <button data-icon title=\" Edit Template\" @click=", "></button>"]), "Current Template: " + b.now.selected.template.name, ja, b.templates.map(function (c) { var d = JSON.parse(c), e = b.now.selected.template.id == d.id; return k(__makeTemplateObject(["<option ?selected=", " value=", ">", "</option>"], ["<option ?selected=", " value=", ">", "</option>"]), e, d.id, d.name); }), s.bind(void 0, "template", !0)) : $, s.bind(void 0, "template", !1), C.printDocument, C.importData, (_b = b) === null || _b === void 0 ? void 0 : _b.forExport, "My Data\r\n            (" + new Date(b.lastSaved).toLocaleDateString() + ").json", C.clearData, new Date(((_c = b) === null || _c === void 0 ? void 0 : _c.lastSaved) || "").toLocaleTimeString("en-us", { timeStyle: "short" }));
+            ">\n        </a>\n        <!-- Clear Data -->\n        <button data-icon title=\"Clear Data\" class=destructive @click=", ">\n        </button>\n    </div>\n    \n    <!-- Last Saved -->\n    <div class=configuration id=savedIndicator>\n        Saved: ", "\n    </div>"]), b.nowIndex == 0, qa.bind(void 0, -1), b.nowIndex >= b.history.length - 1, qa.bind(void 0, 1), E.zoom.bind(void 0, "out"), E.zoom.bind(void 0, "in"), "(" + Math.round(a.zoom * 100) + "%)", "You're in " + (a.darkMode ? "Dark" : "Light") + " Mode", a.darkMode, E.toggleDarkMode, a.advancedUI, (a.advancedUI ? "Disable" : "Enable") + " Advanced UI", E.toggleAdvancedUI, b.templates.length ? j(__makeTemplateObject(["<select title=", " @input=", ">\n                ", "\n            </select>\n            <button data-icon title=\" Edit Template\" @click=", "></button>"], ["<select title=", " @input=", ">\n                ", "\n            </select>\n            <button data-icon title=\" Edit Template\" @click=", "></button>"]), "Current Template: " + b.now.selected.template.name, la, b.templates.map(function (c) { var d = JSON.parse(c), e = b.now.selected.template.id == d.id; return j(__makeTemplateObject(["<option ?selected=", " value=", ">", "</option>"], ["<option ?selected=", " value=", ">", "</option>"]), e, d.id, d.name); }), s.bind(void 0, "template", !0)) : ba, s.bind(void 0, "template", !1), E.printDocument, E.importData, (_b = b) === null || _b === void 0 ? void 0 : _b.forExport, "My Data\r\n            (" + new Date(b.lastSaved).toLocaleDateString() + ").json", E.clearData, new Date(((_c = b) === null || _c === void 0 ? void 0 : _c.lastSaved) || "").toLocaleTimeString("en-us", { timeStyle: "short" }));
     };
-    var ta = function (a, c) { return a ? (a == "field type" && (b.now.editing = c ? b.now.selected.fieldType : new ca()), a == "template" && (b.now.editing = c ? b.now.selected.template : new da()), k(__makeTemplateObject(["\n    <div class=content>\n        \n        <div class=heading>\n            ", " Editor\n            <span\n            tabindex=0 \n            data-tooltip=", ">\n            </span>\n        </div>\n\n        <input \n        name=name \n        @input=", " \n        type=text \n        placeholder=", "\n        value=", " />\n        \n        <div class=actions>\n\n            <button \n            @click=", ">\n                Done\n            </button>\n\n            ", "\n\n            <button \n            class=cancel \n            @click=", ">\n                Cancel\n            </button>\n            \n        </div>\n\n    </div>"], ["\n    <div class=content>\n        \n        <div class=heading>\n            ", " Editor\n            <span\n            tabindex=0 \n            data-tooltip=", ">\n            </span>\n        </div>\n\n        <input \n        name=name \n        @input=", " \n        type=text \n        placeholder=", "\n        value=", " />\n        \n        <div class=actions>\n\n            <button \n            @click=", ">\n                Done\n            </button>\n\n            ",
-        "\n\n            <button \n            class=cancel \n            @click=", ">\n                Cancel\n            </button>\n            \n        </div>\n\n    </div>"]), b.now.editing.type, "This pane is for renaming or editing your " + b.now.editing.type + ".", _.updateType, "Name your " + b.now.editing.type + "...", c ? b.now.editing.name : "", c ? s.bind(void 0, null) : _.saveNewType.bind(void 0, b.now.editing.type), c ? k(__makeTemplateObject(["\n            <button \n            class=remove \n            @click=", ">\n                Delete ", "\n            </button>"], ["\n            <button \n            class=remove \n            @click=", ">\n                Delete ", "\n            </button>"]), _.removeType.bind(void 0, b.now.editing.type), b.now.editing.type) : "", s.bind(void 0, null))) : ""; };
-    function p() {
+    var va = function (a, c) { return a ? (a == "field type" && (b.now.editing = c ? b.now.selected.fieldType : new da()), a == "template" && (b.now.editing = c ? b.now.selected.template : new ea()), j(__makeTemplateObject(["\n    <div class=content>\n        \n        <div class=heading>\n            ", " Editor\n            <span\n            tabindex=0 \n            data-tooltip=", ">\n            </span>\n        </div>\n\n        <input \n        name=name \n        @input=", " \n        type=text \n        placeholder=", "\n        value=", " />\n        \n        <div class=actions>\n\n            <button \n            @click=", ">\n                Done\n            </button>\n\n            ", "\n\n            <button \n            class=cancel \n            @click=", ">\n                Cancel\n            </button>\n            \n        </div>\n\n    </div>"], ["\n    <div class=content>\n        \n        <div class=heading>\n            ", " Editor\n            <span\n            tabindex=0 \n            data-tooltip=", ">\n            </span>\n        </div>\n\n        <input \n        name=name \n        @input=", " \n        type=text \n        placeholder=", "\n        value=", " />\n        \n        <div class=actions>\n\n            <button \n            @click=", ">\n                Done\n            </button>\n\n            ",
+        "\n\n            <button \n            class=cancel \n            @click=", ">\n                Cancel\n            </button>\n            \n        </div>\n\n    </div>"]), b.now.editing.type, "This pane is for renaming or editing your " + b.now.editing.type + ".", aa.updateType, "Name your " + b.now.editing.type + "...", c ? b.now.editing.name : "", c ? s.bind(void 0, null) : aa.saveNewType.bind(void 0, b.now.editing.type), c ? j(__makeTemplateObject(["\n            <button \n            class=remove \n            @click=", ">\n                Delete ", "\n            </button>"], ["\n            <button \n            class=remove \n            @click=", ">\n                Delete ", "\n            </button>"]), aa.removeType.bind(void 0, b.now.editing.type), b.now.editing.type) : "", s.bind(void 0, null))) : ""; };
+    function o() {
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_b) {
-            t(), B(), n(), $a(), ua();
+            t(), D(), n(), db(), wa();
             return [2];
         }); });
     }
     function n() {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_b) {
-                O(k(__makeTemplateObject(["\n        <div class=content>\n            ", "\n        </div>"], ["\n        <div class=content>\n            ", "\n        </div>"]), b.now.children.map(function (a) { return fa(a); })), w.previewPane);
+                R(j(__makeTemplateObject(["\n        <div class=content>\n            ", "\n        </div>"], ["\n        <div class=content>\n            ", "\n        </div>"]), b.now.children.map(function (a) { return ga(a); })), v.previewPane);
                 return [2];
             });
         });
     }
-    function B() {
+    function D() {
         return __awaiter(this, void 0, void 0, function () { var a; return __generator(this, function (_b) {
             a = document.documentElement;
-            a.style.setProperty("--preview_zoom", b.settings.zoom), a.classList.toggle("dark_mode", b.settings.darkMode), a.classList.toggle("advanced", b.settings.advancedUI), O(sa(), w.toolbar);
+            a.style.setProperty("--preview_zoom", b.settings.zoom), a.classList.toggle("dark_mode", b.settings.darkMode), a.classList.toggle("advanced", b.settings.advancedUI), R(ua(), v.toolbar);
             return [2];
         }); });
     }
-    function ua() { O(ra(), w.customStyles); }
+    function wa() { R(ta(), v.customStyles); }
     function s(a, c) {
         if (c === void 0) { c = !1; }
-        w.modal.classList.toggle("open", a), O(ta(a, c), w.modal);
+        v.modal.classList.toggle("open", a), R(va(a, c), v.modal);
         if (a)
             try {
-                w.modal.querySelector("input").focus();
+                v.modal.querySelector("input").focus();
             }
             catch (d) { }
-        a || (b.now.editing = {}, B(), $a(), n());
+        a || (b.now.editing = {}, D(), db(), n());
     }
-    function $a() {
+    function db() {
         var e_15, _b;
         var _c, _d, _e;
-        O(qa(), w.styleEditorPane);
+        R(sa(), v.styleEditorPane);
         try {
-            for (var _f = __values(w.styleEditorPane.querySelectorAll("code")), _g = _f.next(); !_g.done; _g = _f.next()) {
+            for (var _f = __values(v.styleEditorPane.querySelectorAll("code")), _g = _f.next(); !_g.done; _g = _f.next()) {
                 var a = _g.value;
-                a.innerHTML = "", a.id.includes("field") && (a.innerText = ((_c = b.now.selected.fieldType) === null || _c === void 0 ? void 0 : _c.css) || ""), a.id.includes("global") && (a.innerText = ((_d = b.now.selected.globalType) === null || _d === void 0 ? void 0 : _d.css) || ""), (_e = y) === null || _e === void 0 ? void 0 : _e.formatCSS({ target: a });
+                a.innerHTML = "", a.id.includes("field") && (a.innerText = ((_c = b.now.selected.fieldType) === null || _c === void 0 ? void 0 : _c.css) || ""), a.id.includes("global") && (a.innerText = ((_d = b.now.selected.globalType) === null || _d === void 0 ? void 0 : _d.css) || ""), (_e = A) === null || _e === void 0 ? void 0 : _e.formatCSS({ target: a });
             }
         }
         catch (e_15_1) { e_15 = { error: e_15_1 }; }
@@ -832,25 +830,28 @@ var __spread = (this && this.__spread) || function () {
         }
     }
     function t() {
-        O(k(__makeTemplateObject(["\n        <div class=heading>\n            Content Editor\n            <span tabindex=0\n                data-tooltip=\"This pane is for editing the content of your document. Try nesting content blocks or adding custom fields to a section.\"></span>\n        </div>\n        \n        ", "\n        "], ["\n        <div class=heading>\n            Content Editor\n            <span tabindex=0\n                data-tooltip=\"This pane is for editing the content of your document. Try nesting content blocks or adding custom fields to a section.\"></span>\n        </div>\n        \n        ", "\n        "]), b.now.children.map(function (a, c) { return ea(a, b.now, c); })), w.contentEditorPane);
+        R(j(__makeTemplateObject(["\n        <div class=heading>\n            Content Editor\n            <span tabindex=0\n                data-tooltip=\"This pane is for editing the content of your document. Try nesting content blocks or adding custom fields to a section.\"></span>\n        </div>\n        \n        ", "\n        "], ["\n        <div class=heading>\n            Content Editor\n            <span tabindex=0\n                data-tooltip=\"This pane is for editing the content of your document. Try nesting content blocks or adding custom fields to a section.\"></span>\n        </div>\n        \n        ", "\n        "]), b.now.children.map(function (a, c) { return fa(a, b.now, c); })), v.contentEditorPane);
     }
-    function pa(a) {
+    function ra(a) {
         if (a === void 0) { a = !1; }
         return __awaiter(this, void 0, void 0, function () { var c, d, e; return __generator(this, function (_b) {
             if (!b.hasChanged && !a)
                 return [2];
-            b.templates.map(function (f, h) { var g = JSON.parse(f), l = g.id == b.now.selected.template.id; l && b.templates.splice(h, 1, JSON.stringify(b.now.selected.template)); }), localStorage.setItem("State", JSON.stringify(b)), b.history.push(JSON.stringify(b.now)), b.nowIndex = b.history.length - 1, b.history.length > 250 && b.history.splice(0, 1), b.hasChanged = !1, b.lastSaved = new Date().getTime();
-            c = JSON.stringify(b, function (f, h) { return f == "history" ? [] : h; }), d = new Blob([c], { type: "application/json" }), e = URL.createObjectURL(d);
-            b.forExport = e, B();
+            b.templates.map(function (f, i) { var h = JSON.parse(f), l = h.id == b.now.selected.template.id; l && b.templates.splice(i, 1, JSON.stringify(b.now.selected.template)); }), localStorage.setItem("State", JSON.stringify(b)), b.history.push(JSON.stringify(b.now)), b.nowIndex = b.history.length - 1, b.history.length > 250 && b.history.splice(0, 1), b.hasChanged = !1, b.lastSaved = new Date().getTime();
+            c = JSON.stringify(b, function (f, i) { switch (f) {
+                case "history": return [];
+                case "settings": return {};
+            } }), d = new Blob([c], { type: "application/json" }), e = URL.createObjectURL(d);
+            b.forExport = e, D();
             return [2];
         }); });
     }
-    b.isNewUser && !b.now.children.length && (b.now.children.push(new K()), pa(!0));
-    L();
-    p();
-    setInterval(pa, G.saveInterval);
+    b.isNewUser && !b.now.children.length && (b.now.children.push(new M()), ra(!0));
+    N();
+    o();
+    setInterval(ra, H.saveInterval);
     document.body.classList.remove("loading");
-    b.isMobile = innerWidth < G.mobileBreakpoint;
+    b.isMobile = innerWidth < H.mobileBreakpoint;
     try {
         for (var _c = __values(document.querySelectorAll("[data-icon]")), _d = _c.next(); !_d.done; _d = _c.next()) {
             var a = _d.value;
