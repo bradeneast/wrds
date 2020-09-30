@@ -452,38 +452,25 @@ input[type="submit"].remove {
   margin-left: 0;
 }
 
-button.primary, button.secondary, button.destructive,
-label.fileInput.primary,
-label.fileInput.secondary,
-label.fileInput.destructive,
-a.button.primary,
-a.button.secondary,
-a.button.destructive,
-input[type="submit"].primary,
-input[type="submit"].secondary,
-input[type="submit"].destructive {
-  border: var(--normal_border);
-}
-
 button.primary,
 label.fileInput.primary,
 a.button.primary,
 input[type="submit"].primary {
-  border-color: var(--primary);
+  color: var(--primary);
 }
 
 button.secondary,
 label.fileInput.secondary,
 a.button.secondary,
 input[type="submit"].secondary {
-  border-color: var(--green);
+  color: var(--green);
 }
 
 button.destructive,
 label.fileInput.destructive,
 a.button.destructive,
 input[type="submit"].destructive {
-  border-color: var(--red);
+  color: var(--red);
 }
 
 button[disabled],

@@ -52,22 +52,16 @@ input[type="submit"] {
         margin-left: 0;
     }
 
-    &.primary,
-    &.secondary,
-    &.destructive {
-        border: var(--normal_border);
-    }
-
     &.primary {
-        border-color: var(--primary);
+        color: var(--primary);
     }
 
     &.secondary {
-        border-color: var(--green);
+        color: var(--green);
     }
 
     &.destructive {
-        border-color: var(--red);
+        color: var(--red);
     }
 
     &[disabled] {

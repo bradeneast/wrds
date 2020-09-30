@@ -42,8 +42,9 @@ export default () => {
         <input aria-hidden="true" id=importData type=file accept=.json @input=${misc.importData}>
         <label data-icon title="Import Data" class="fileInput secondary" for=importData>
         </label>
-        <a class="button primary" data-icon title="Export Data" id=exportData .href=${State?.forExport} download=${`My Data
-            (${new Date(State.lastSaved).toLocaleDateString()}).json`}>
+        <a class="button primary" data-icon title="Export Data" id=exportData .href=${State?.forExport} download=${
+            `My WRDS Backup (${new Date(State.lastSaved).toLocaleDateString()}).json`
+            }>
         </a>
         <!-- Clear Data -->
         <button data-icon title="Clear Data" class=destructive @click=${misc.clearData}>
