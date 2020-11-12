@@ -43,7 +43,7 @@ export default string => {
 
 	// Complex factories
 	let lists = str => {
-		let ordered = new RegExp(`[^|\\n]${olDelimiter}`).test(str);
+		let ordered = new RegExp(`(^|\\n)${olDelimiter}`).test(str);
 		let delimiter = new RegExp(`(^|\\n)${ordered ? olDelimiter : ulDelimiter}`);
 		let items = str.split(delimiter).filter(item => item.trim().length);
 		return tag(
@@ -55,7 +55,8 @@ export default string => {
 	let headings = str => {
 		str = str.trim();
 		let level = str.indexOf(' ');
-		return tag(`h${level}`, str.slice(level).replace(/#+$/, '').trim());
+		let contents = str.slice(level).replace(/#+$/, '').trim();
+		return tag(`h${level} id=${contents.replace(/\W+/g, '-').toLowerCase()}`, contents);
 	}
 
 	let altHeadings = str => {
